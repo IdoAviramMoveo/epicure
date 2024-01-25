@@ -1,0 +1,19 @@
+@mixin desktop {
+  @media screen and (min-width: 901px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media screen and (max-width: 900px) {
+    @content;
+  }
+}
+
+@mixin font-style {
+  font-family: "Helvetica Neue";
+  color: black;
+  line-height: normal;
+  font-weight: 200;
+  font-style: normal;
+  margin: 0px;
+}
