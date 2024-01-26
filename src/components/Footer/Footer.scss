@@ -1,0 +1,21 @@
+@import "../../styles/mixins";
+
+.footer {
+  display: flex;
+  padding: 20px 232px 24px 19px;
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+
+    .link {
+      @include font-style;
+      text-decoration: none;
+      font-size: 18px;
+      letter-spacing: 1.92px;
+      white-space: nowrap;
+    }
+  }
+}
