@@ -18,7 +18,7 @@ const HomePage = () => {
         foodIcon={spicyFoodIcon}
         price={88}
       />
-      <Card title='Onza' image={onzaRestaurant} />
+      <Card title='Onza' image={onzaRestaurant} className='third-type' />
       <Footer />
     </>
   );
