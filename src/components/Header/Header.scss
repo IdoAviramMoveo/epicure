@@ -27,12 +27,13 @@
     height: 32px;
     flex-shrink: 0;
     cursor: pointer;
-    @include mobile {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     @include desktop {
+      position: static;
+      left: auto;
+      transform: none;
       margin-left: 127px;
     }
   }
@@ -42,7 +43,6 @@
     @include desktop {
       display: flex;
       gap: 32px;
-
       .big-link {
         @include font-style;
         font-size: 27px;
