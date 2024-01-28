@@ -2,7 +2,6 @@
 
 .hero-container {
   background-image: url("../../assets/images/heroPicture.png");
-  //background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   height: 273px;
@@ -19,6 +18,7 @@
     width: 335px;
     height: 144px;
     @include desktop {
+      justify-content: center;
       width: 776px;
       height: 221px;
     }
@@ -31,6 +31,11 @@
       width: 315px;
       padding: 16px 10px;
       gap: 18px;
+      @include desktop {
+        width: 405px;
+        height: 149px;
+        padding: 36px 126px;
+      }
 
       .hero-text {
         @include font-style;
@@ -39,17 +44,26 @@
         line-height: 32px;
         letter-spacing: 1.97px;
         text-align: center;
+        @include desktop {
+          font-size: 32px;
+          line-height: 40px;
+        }
       }
 
       .search-bar {
         display: flex;
         align-items: center;
-        width: 291px;
+        width: 290px;
         height: 30px;
         border-radius: 4px;
         border: 0.5px solid #000;
         padding: 6px 12px;
         gap: 8px;
+        @include desktop {
+          width: 480px;
+          height: 36px;
+          gap: 16px;
+        }
 
         input {
           @include font-style;
@@ -58,6 +72,11 @@
           flex: 1 0 0;
           font-size: 12px;
           letter-spacing: 1.29px;
+          @include desktop {
+            padding: 0 0 0 10px;
+            font-size: 24px;
+            letter-spacing: 1.29px;
+          }
         }
 
         button {
@@ -65,6 +84,12 @@
           background-color: transparent;
           padding: 0;
           cursor: pointer;
+          img {
+            @include desktop {
+              width: 32px;
+              height: 32px;
+            }
+          }
         }
       }
     }
