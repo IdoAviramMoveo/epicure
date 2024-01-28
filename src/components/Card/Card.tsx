@@ -1,17 +1,7 @@
 import "./Card.scss";
+import { CardProps } from "../../models/types";
 
 import ilsLogo from "../../assets/images/ilsLogo.svg";
-
-type CardProps = {
-  title: string;
-  image: string;
-  subtitle?: string;
-  description?: string;
-  foodIcon?: string;
-  price?: number;
-  className?: string;
-  rating?: string;
-};
 
 const Card: React.FC<CardProps> = ({ title, image, subtitle, description, foodIcon, price, className, rating }) => {
   return (
