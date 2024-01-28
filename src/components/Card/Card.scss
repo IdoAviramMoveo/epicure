@@ -89,7 +89,7 @@
           line-height: 20px;
           letter-spacing: 1.97px;
           @include desktop {
-            width: 295px; // Use 100% width instead of fixed width to prevent overflow
+            width: 295px;
             height: 123px;
             font-size: 24px;
             line-height: 30px;
@@ -101,9 +101,17 @@
           width: 30px;
           height: 24px;
           @include desktop {
+            width: 39.757px;
+            height: 29.68px;
             display: flex;
             justify-content: center;
           }
+        }
+      }
+
+      .rating-image {
+        @include mobile {
+          display: none;
         }
       }
 
@@ -120,6 +128,27 @@
           justify-content: center;
           font-size: 24px;
           line-height: 30px;
+          font-weight: 200;
+          flex-direction: row;
+
+          gap: 8px;
+          .line {
+            width: 112px;
+            height: 0.5px;
+            background: #979797;
+            align-self: center;
+          }
+
+          .value-logo-container {
+            display: flex;
+            flex-direction: row;
+
+            .ils-icon {
+              align-self: flex-end;
+              width: 14px;
+              height: 19px;
+            }
+          }
         }
       }
     }
@@ -133,6 +162,15 @@
       .card-image {
         height: 100%;
         width: 100%;
+      }
+    }
+    .card-content {
+      padding: 24px 0px 24px 0px;
+      .description-icon-price {
+        gap: 8px;
+        .card-subtitle {
+          font-size: 24px;
+        }
       }
     }
   }
@@ -151,6 +189,7 @@
     .card-content {
       padding: 20px 0px 0px 0px;
       gap: 0px;
+      height: 133px;
       .card-title {
         font-size: 30px;
       }

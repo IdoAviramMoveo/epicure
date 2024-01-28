@@ -10,9 +10,10 @@ type CardProps = {
   foodIcon?: string;
   price?: number;
   className?: string;
+  rating?: string;
 };
 
-const Card: React.FC<CardProps> = ({ title, image, subtitle, description, foodIcon, price, className }) => {
+const Card: React.FC<CardProps> = ({ title, image, subtitle, description, foodIcon, price, className, rating }) => {
   return (
     <div className={`card ${className || ""}`}>
       <div className='image-container'>
@@ -24,12 +25,17 @@ const Card: React.FC<CardProps> = ({ title, image, subtitle, description, foodIc
           <div className='description-icon'>
             {subtitle && <h4 className='card-subtitle'>{subtitle}</h4>}
             {description && <p className='card-description'>{description}</p>}
-            {foodIcon && <img src={foodIcon} alt='food icon' className='food-icon' />}
+            {foodIcon && <img src={foodIcon} alt='Food Icon' className='food-icon' />}
           </div>
+          {rating && <img src={rating} alt='Rating Stars' className='rating-image' />}
           {price && (
             <div className='card-price'>
-              <img src={ilsLogo} alt='ILS' className='ils-icon' />
-              {price}
+              <div className='line'></div>
+              <div className='value-logo-container'>
+                <img src={ilsLogo} alt='ILS' className='ils-icon' />
+                <span className='price-value'>{price} </span>
+              </div>
+              <div className='line'></div>
             </div>
           )}
         </div>
