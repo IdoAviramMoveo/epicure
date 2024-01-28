@@ -1,6 +1,7 @@
 import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import Hero from "../../components/Hero/Hero";
 import Card from "../../components/Card/Card";
+import Footer from "../../components/Footer/Footer";
 
 import claroRestaurant from "../../assets/images/claroRestaurant.png";
 import onzaRestaurant from "../../assets/images/onzaRestaurant.png";
@@ -21,6 +22,7 @@ const HomePage = () => {
         price={88}
       />
       <Card title='Onza' image={onzaRestaurant} className='third-type' />
+      <Hero />
       <Footer />
     </>
   );

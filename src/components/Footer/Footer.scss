@@ -29,8 +29,9 @@
 }
 
 .under-footer {
-  height: 21px;
-  @include mobile {
-    display: none;
+  display: none;
+  @include desktop {
+    display: flex;
+    height: 21px;
   }
 }
