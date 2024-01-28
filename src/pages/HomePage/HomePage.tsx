@@ -13,6 +13,7 @@ const HomePage = () => {
   return (
     <>
       <Header />
+      <Hero />
       <Card title='Claro' subtitle='Ran Shmueli' image={claroRestaurant} rating={fourStars} className='first-type' />
       <Card
         title='Pad Ki Mao'
@@ -22,7 +23,6 @@ const HomePage = () => {
         price={88}
       />
       <Card title='Onza' image={onzaRestaurant} className='third-type' />
-      <Hero />
       <Footer />
     </>
   );
