@@ -1,0 +1,201 @@
+@import "../../styles/mixins";
+
+.card {
+  width: 245px;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: $color-card-background;
+  @include desktop {
+    width: 380px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .image-container {
+    @include desktop {
+      height: 306px;
+    }
+    .card-image {
+      width: 100%;
+      height: 152px;
+      @include desktop {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  .card-content {
+    @include font-style;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    align-items: flex-start;
+    @include desktop {
+      align-items: center;
+      padding: 24px 0px 8px 0px;
+    }
+
+    .card-title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 2.67px;
+      @include desktop {
+        font-size: 40px;
+        line-height: 47px;
+        font-style: normal;
+      }
+    }
+
+    .card-subtitle {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 200;
+      line-height: 20px;
+      letter-spacing: 1.97px;
+    }
+
+    .description-icon-price {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      @include desktop {
+        gap: 18px;
+      }
+      .description-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        @include desktop {
+          flex-direction: column-reverse;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .card-description {
+          width: 209px;
+          height: 100px;
+          margin: 0;
+          font-size: 16px;
+          line-height: 20px;
+          letter-spacing: 1.97px;
+          @include desktop {
+            width: 295px;
+            height: 123px;
+            font-size: 24px;
+            line-height: 30px;
+            font-style: normal;
+          }
+        }
+
+        .food-icon {
+          width: 30px;
+          height: 24px;
+          @include desktop {
+            width: 39.757px;
+            height: 29.68px;
+            display: flex;
+            justify-content: center;
+          }
+        }
+      }
+
+      .rating-image {
+        @include mobile {
+          display: none;
+        }
+      }
+
+      .card-price {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 1.97px;
+        display: flex;
+        align-items: flex-end;
+        font-style: normal;
+        .value-logo-container {
+          display: flex;
+          flex-direction: row;
+          gap: 4px;
+        }
+        @include desktop {
+          justify-content: center;
+          font-size: 24px;
+          line-height: 30px;
+          font-weight: 200;
+          flex-direction: row;
+          gap: 8px;
+          .line {
+            width: 112px;
+            height: 0.5px;
+            background: $color-grey-line;
+            align-self: center;
+          }
+          .value-logo-container {
+            display: flex;
+            flex-direction: row;
+            .ils-icon {
+              align-self: flex-end;
+              width: 14px;
+              height: 19px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.card.first-type {
+  @include desktop {
+    .image-container {
+      height: 236px;
+      .card-image {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .card-content {
+      padding: 24px 0px 24px 0px;
+      .description-icon-price {
+        gap: 8px;
+        .card-subtitle {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+
+.card.third-type {
+  @include desktop {
+    width: 231px;
+    .image-container {
+      height: 224px;
+      .card-image {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .card-content {
+      padding: 20px 0px 0px 0px;
+      gap: 0px;
+      height: 133px;
+      .card-title {
+        font-size: 30px;
+      }
+    }
+  }
+
+  @include mobile {
+    .card-content {
+      gap: 0px;
+      .card-title {
+        height: 49px;
+      }
+    }
+  }
+}
