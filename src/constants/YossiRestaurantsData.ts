@@ -5,7 +5,7 @@ import kitchenMarketRestaurant from "../assets/images/kitchenMarketRestaurant.pn
 import mashyaRestaurant from "../assets/images/mashyaRestaurant.png";
 
 const YossiRestaurantsData: { title: string; cards: CardProps[] } = {
-  title: "Chef of the week:",
+  title: "yossi’s restaurants:",
   cards: [
     {
       title: "Onza",

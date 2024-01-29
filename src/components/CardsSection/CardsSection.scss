@@ -41,6 +41,20 @@
       margin: 0 0 0 0;
     }
   }
+  .cards-section-title-three {
+    @extend .cards-section-title;
+    font-size: 16px;
+    @include desktop {
+      align-self: self-start;
+      max-width: 1185px;
+      width: 100%;
+      font-size: 30px;
+      line-height: 35px;
+      text-align: left;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 
   .all-restaurants {
     display: flex;

@@ -27,7 +27,7 @@ const CardsSection: React.FC<CardSectionProps> = ({ cardsData, cardType }) => {
   return (
     <>
       <div className='cards-section'>
-        <h3 className='cards-section-title'>{cardsData.title}</h3>
+        <h3 className={`cards-section-title${cardType === 3 ? "-three" : ""}`}>{cardsData.title}</h3>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           initialSlide={0}
