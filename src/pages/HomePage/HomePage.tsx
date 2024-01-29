@@ -1,28 +1,20 @@
 import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
-import Card from "../../components/Card/Card";
+import CardsSection from "../../components/CardsSection/CardsSection";
 import Footer from "../../components/Footer/Footer";
 
-import claroRestaurant from "../../assets/images/claroRestaurant.png";
-import onzaRestaurant from "../../assets/images/onzaRestaurant.png";
-import padKiMao from "../../assets/images/padKiMao.png";
-import spicyFoodIcon from "../../assets/images/spicyFoodIcon.svg";
-import fourStars from "../../assets/images/fourStars.svg";
+import RestaurantsData from "../../constants/RestaurantsData";
+import DishesData from "../../constants/DishesData";
+import YossiRestaurantsData from "../../constants/YossiRestaurantsData";
 
 const HomePage = () => {
   return (
     <>
       <Header />
       <Hero />
-      <Card title='Claro' subtitle='Ran Shmueli' image={claroRestaurant} rating={fourStars} className='first-type' />
-      <Card
-        title='Pad Ki Mao'
-        description='Shrimps, Glass Noodles, Kemiri Nuts, Shallots, Lemon Grass, Magic Chili Brown Coconut'
-        image={padKiMao}
-        foodIcon={spicyFoodIcon}
-        price={88}
-      />
-      <Card title='Onza' image={onzaRestaurant} className='third-type' />
+      <CardsSection cardsData={RestaurantsData} cardType={1} />
+      <CardsSection cardsData={DishesData} cardType={2} />
+      <CardsSection cardsData={YossiRestaurantsData} cardType={3} />
       <Footer />
     </>
   );
