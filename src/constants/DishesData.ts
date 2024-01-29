@@ -1,4 +1,4 @@
-import { CardProps } from "../models/types";
+import { Section } from "../models/types";
 
 import padKiMao from "../assets/images/padKiMao.png";
 import taMaLaKo from "../assets/images/taMaLaKo.png";
@@ -9,7 +9,7 @@ import spicyFoodIcon from "../assets/images/spicyFoodIcon.svg";
 import veganFoodIcon from "../assets/images/veganFoodIcon.svg";
 import vegiFoodIcon from "../assets/images/vegiFoodIcon.svg";
 
-const DishesData: { title: string; cards: CardProps[] } = {
+const DishesData: Section = {
   title: "SIGNATURE DISH OF:",
   cards: [
     {
