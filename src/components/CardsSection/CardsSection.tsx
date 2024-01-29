@@ -1,14 +1,16 @@
+import React from "react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-import Card from "../Card/Card";
 import "./CardsSection.scss";
+import Card from "../Card/Card";
 import { CardProps } from "../../models/types";
-import React from "react";
+import allRestaurantsIcon from "../../assets/images/allRestaurantsIcon.svg";
 
 export type section = {
   title: string;
@@ -21,17 +23,26 @@ export type CardSectionProps = {
 };
 
 const CardsSection: React.FC<CardSectionProps> = ({ cardsData, cardType }) => {
+  const spaceBetween: number = cardType === 3 ? 16 : 24;
   return (
     <>
       <div className='cards-section'>
         <h3>{cardsData.title}</h3>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
-          spaceBetween={10}
+          initialSlide={0}
+          spaceBetween={24}
           slidesPerView={1.4}
+          coverflowEffect={{
+            rotate: 50,
+            stretch: 0,
+            depth: 0,
+            modifier: 0,
+            slideShadows: true,
+          }}
           breakpoints={{
             900: {
-              spaceBetween: 20,
+              spaceBetween: spaceBetween,
               slidesPerView: 3,
             },
           }}
@@ -61,6 +72,13 @@ const CardsSection: React.FC<CardSectionProps> = ({ cardsData, cardType }) => {
             );
           })}
         </Swiper>
+
+        {cardType === 1 && (
+          <div className='all-restaurants'>
+            <span>All Restaurants</span>
+            <img src={allRestaurantsIcon} alt='All Restaurants' className='icon' />
+          </div>
+        )}
       </div>
     </>
   );

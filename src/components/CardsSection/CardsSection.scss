@@ -2,6 +2,29 @@
 
 .cards-section {
   padding-left: 20px;
+  @include desktop {
+    gap: 40px;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .swiper {
+      width: 100%;
+      max-width: 1185px;
+
+      .swiper-wrapper {
+        max-width: 1185px;
+        width: 100%;
+      }
+
+      .swiper-slide {
+        width: auto;
+        height: auto;
+        max-width: fit-content;
+      }
+    }
+  }
 
   h3 {
     @include font-style;
@@ -9,5 +32,46 @@
     line-height: 24px;
     letter-spacing: 1.25px;
     text-transform: uppercase;
+    text-align: left;
+    margin: 48px 0 17px 0;
+    @include desktop {
+      text-align: center;
+      font-size: 30px;
+      line-height: 35px;
+      margin: 80px 0 0 0;
+    }
+  }
+
+  .all-restaurants {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 12px;
+    margin-top: 18.2px;
+    @include desktop {
+      width: 100%;
+      max-width: 1185px;
+      margin-top: 0;
+      justify-content: flex-end;
+    }
+
+    span {
+      @include font-style;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 35px;
+      letter-spacing: 2px;
+      text-transform: capitalize;
+      @include desktop {
+        font-size: 24px;
+      }
+    }
+
+    .icon {
+      cursor: pointer;
+      width: 24px;
+      height: 17.999px;
+    }
   }
 }
