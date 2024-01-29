@@ -27,7 +27,7 @@ const CardsSection: React.FC<CardSectionProps> = ({ cardsData, cardType }) => {
   return (
     <>
       <div className='cards-section'>
-        <h3>{cardsData.title}</h3>
+        <h3 className='cards-section-title'>{cardsData.title}</h3>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           initialSlide={0}
@@ -75,8 +75,8 @@ const CardsSection: React.FC<CardSectionProps> = ({ cardsData, cardType }) => {
 
         {cardType === 1 && (
           <div className='all-restaurants'>
-            <span>All Restaurants</span>
-            <img src={allRestaurantsIcon} alt='All Restaurants' className='icon' />
+            <span className='all-restaurants-text'>All Restaurants</span>
+            <img src={allRestaurantsIcon} alt='All Restaurants' className='arrows-icon' />
           </div>
         )}
       </div>

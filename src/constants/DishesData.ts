@@ -4,7 +4,6 @@ import padKiMao from "../assets/images/padKiMao.png";
 import taMaLaKo from "../assets/images/taMaLaKo.png";
 import redFarm from "../assets/images/redFarm.png";
 import smokedPizza from "../assets/images/smokedPizza.png";
-import garbanzoFrito from "../assets/images/garbanzoFrito.png";
 
 import spicyFoodIcon from "../assets/images/spicyFoodIcon.svg";
 import veganFoodIcon from "../assets/images/veganFoodIcon.svg";
@@ -40,13 +39,6 @@ const DishesData: { title: string; cards: CardProps[] } = {
       description: 'Basil dough, cashew "butter", demi-glace, bison & radish',
       foodIcon: veganFoodIcon,
       price: 65,
-    },
-    {
-      title: "Garbanzo Frito",
-      image: garbanzoFrito,
-      description: "Polenta fingers, veal cheek, magic chili cured lemon cream, yellow laksa",
-      foodIcon: spicyFoodIcon,
-      price: 98,
     },
   ],
 };

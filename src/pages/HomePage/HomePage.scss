@@ -1,1 +1,9 @@
+@import "../../styles/mixins";
 
+.homepage-container {
+  @include desktop {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+  }
+}
