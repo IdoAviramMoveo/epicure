@@ -20,9 +20,9 @@ const CardsGallery: React.FC<CardsGalleryProps> = ({ cardsData, cardType }) => {
     <>
       <div className='cards-section'>
         <h3 className={`cards-section-title${cardType === 3 ? "-three" : ""}`}>{cardsData.title}</h3>
-        <Swiper {...SwiperConfig(spaceBetween)}>
+        <Swiper className='swiper' {...SwiperConfig(spaceBetween)}>
           {cardsData.cards.map((card: CardProps) => (
-            <SwiperSlide key={card.title}>
+            <SwiperSlide className='swiper-slide' key={card.title}>
               <Card {...card} className={className} />
             </SwiperSlide>
           ))}

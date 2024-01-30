@@ -10,7 +10,6 @@ import Footer from "../../components/Footer/Footer";
 import { CardType } from "../../models/types";
 import RestaurantsData from "../../constants/RestaurantsData";
 import DishesData from "../../constants/DishesData";
-import YossiRestaurantsData from "../../constants/YossiRestaurantsData";
 import IconsData from "../../constants/IconsData";
 
 const HomePage = () => {
