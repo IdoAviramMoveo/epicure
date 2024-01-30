@@ -1,0 +1,54 @@
+@import "../../styles/mixins";
+
+.chef-container {
+  padding: 0 20px;
+
+  .chef-title {
+    @include font-style;
+    font-size: 18px;
+    line-height: 35px;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+    margin: 48px 0 17px 0;
+  }
+
+  .chef-image-container {
+    position: relative;
+    width: 335px;
+    height: 262px;
+
+    .chef-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .chef-name {
+      @include font-style;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 47px;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 47px;
+      letter-spacing: 2.67px;
+      text-align: center;
+      background-color: $color-chef-overlay;
+    }
+  }
+  .chef-description {
+    @include font-style;
+    text-align: justify;
+    margin-top: 26px;
+    padding-right: 20px;
+    line-height: 28px;
+    font-size: 18px;
+    letter-spacing: 1.25px;
+  }
+}
+
+.yossi-restaurants {
+  margin-top: -16px;
+}

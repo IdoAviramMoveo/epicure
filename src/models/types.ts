@@ -24,3 +24,11 @@ export enum CardType {
   DishType = 2,
   YossiRestaurantType = 3,
 }
+
+export type ChefData = {
+  title: string;
+  chefName: string;
+  image: string;
+  chefDescription: string;
+  restaurants: Section;
+};
