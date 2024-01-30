@@ -4,6 +4,7 @@ import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import CardsGallery from "../../components/CardsGallery/CardsGallery";
 import IconsMeaning from "../../components/IconsMeaning/IconsMeaning";
+import AboutUs from "../../components/AboutUs/AboutUs";
 import Footer from "../../components/Footer/Footer";
 
 import { CardType } from "../../models/types";
@@ -22,6 +23,7 @@ const HomePage = () => {
         <CardsGallery cardsData={DishesData} cardType={CardType.DishType} />
         <IconsMeaning icons={IconsData} />
         <CardsGallery cardsData={YossiRestaurantsData} cardType={CardType.YossiRestaurantType} />
+        <AboutUs />
       </div>
       <Footer />
     </>
