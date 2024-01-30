@@ -1,4 +1,4 @@
-import { CardProps } from "../models/types";
+import { Section } from "../models/types";
 
 import claroRestaurant from "../assets/images/claroRestaurant.png";
 import kabKemRestaurant from "../assets/images/kabKemRestaurant.png";
@@ -11,7 +11,7 @@ import yaPanRestaurant from "../assets/images/yaPanRestaurant.png";
 
 import fourStars from "../assets/images/fourStars.svg";
 
-const RestaurantsData: { title: string; cards: CardProps[] } = {
+const RestaurantsData: Section = {
   title: "POPULAR RESTAURANT IN EPICURE:",
   cards: [
     {

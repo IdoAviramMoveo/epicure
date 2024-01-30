@@ -2,10 +2,11 @@ import "./HomePage.scss";
 
 import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
-import CardsSection from "../../components/CardsSection/CardsSection";
+import CardsGallery from "../../components/CardsGallery/CardsGallery";
 import IconsMeaning from "../../components/IconsMeaning/IconsMeaning";
 import Footer from "../../components/Footer/Footer";
 
+import { CardType } from "../../models/types";
 import RestaurantsData from "../../constants/RestaurantsData";
 import DishesData from "../../constants/DishesData";
 import YossiRestaurantsData from "../../constants/YossiRestaurantsData";
@@ -17,10 +18,10 @@ const HomePage = () => {
       <Header />
       <div className='homepage-container'>
         <Hero />
-        <CardsSection cardsData={RestaurantsData} cardType={1} />
-        <CardsSection cardsData={DishesData} cardType={2} />
+        <CardsGallery cardsData={RestaurantsData} cardType={CardType.RestaurantType} />
+        <CardsGallery cardsData={DishesData} cardType={CardType.DishType} />
         <IconsMeaning icons={IconsData} />
-        <CardsSection cardsData={YossiRestaurantsData} cardType={3} />
+        <CardsGallery cardsData={YossiRestaurantsData} cardType={CardType.YossiRestaurantType} />
       </div>
       <Footer />
     </>
