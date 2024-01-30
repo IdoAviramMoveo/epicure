@@ -58,6 +58,9 @@
       .chef-name {
         @include font-style;
         position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         bottom: 0;
         left: 0;
         right: 0;
@@ -69,6 +72,7 @@
         text-align: center;
         background-color: $color-chef-overlay;
         @include desktop {
+          height: 78px;
           font-size: 40px;
         }
       }
