@@ -4,7 +4,7 @@ import { ChefData } from "../models/types";
 import chefYossi from "../assets/images/chefYossi.png";
 
 const ChefYossiData: ChefData = {
-  title: "Chef Of The Week",
+  title: "Chef Of The Week:",
   chefName: "Yossi Shitrit",
   image: chefYossi,
   chefDescription:

@@ -9,7 +9,6 @@ import Footer from "../../components/Footer/Footer";
 import { CardType } from "../../models/types";
 import RestaurantsData from "../../constants/RestaurantsData";
 import DishesData from "../../constants/DishesData";
-import YossiRestaurantsData from "../../constants/YossiRestaurantsData";
 
 const HomePage = () => {
   return (
@@ -20,7 +19,6 @@ const HomePage = () => {
         <CardsGallery cardsData={RestaurantsData} cardType={CardType.RestaurantType} />
         <CardsGallery cardsData={DishesData} cardType={CardType.DishType} />
         <ChefOfTheWeek />
-        {/* <CardsGallery cardsData={YossiRestaurantsData} cardType={CardType.YossiRestaurantType} /> */}
       </div>
       <Footer />
     </>
