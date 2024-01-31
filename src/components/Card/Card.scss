@@ -9,6 +9,7 @@
     width: 380px;
     align-items: center;
     text-align: center;
+    cursor: pointer;
   }
 
   .image-container {
@@ -151,6 +152,7 @@
 
 .card.first-type {
   @include desktop {
+    cursor: auto;
     .image-container {
       height: 236px;
       .card-image {
@@ -171,6 +173,7 @@
 }
 
 .card.third-type {
+  cursor: auto;
   @include desktop {
     width: 231px;
     .image-container {

@@ -1,0 +1,103 @@
+@import "../../styles/mixins";
+
+.modal-backdrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  gap: 8px;
+
+  .modal-btn-container {
+    width: 573px;
+    .modal-close-btn {
+      padding: 0;
+      display: flex;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      background: none;
+    }
+  }
+
+  .modal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    height: 554px;
+    width: 573px;
+    gap: 40px;
+    .modal-image {
+      width: 576px;
+      height: 292px;
+    }
+
+    .modal-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      height: 182px;
+      width: 232px;
+      padding-bottom: 40px;
+
+      .modal-title {
+        @include font-style;
+        font-size: 32px;
+        text-align: center;
+        font-weight: 400;
+        line-height: 26px;
+        letter-spacing: 2.67px;
+      }
+
+      .card-description {
+        @include font-style;
+        font-size: 14px;
+        text-align: center;
+        line-height: 18px;
+        letter-spacing: 1.97px;
+      }
+
+      .modal-food-icon {
+        width: 40px;
+        height: 30px;
+      }
+
+      .modal-price {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        .modal-line {
+          width: 83.5px;
+          height: 0.5px;
+          background: $color-grey-line;
+          align-self: center;
+        }
+        .value-logo-container {
+          display: flex;
+          flex-direction: row;
+          .modal-ils-icon {
+            align-self: flex-end;
+            width: 11px;
+            height: 19px;
+          }
+          .modal-price-value {
+            @include font-style;
+            font-size: 24px;
+            text-align: center;
+            font-weight: 400;
+            line-height: 30px;
+            letter-spacing: 1px;
+          }
+        }
+      }
+    }
+  }
+}
