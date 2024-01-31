@@ -25,6 +25,19 @@ export enum CardType {
   YossiRestaurantType = 3,
 }
 
+export type StoreButton = {
+  icon: string;
+  text: string;
+  store: string;
+};
+
+export type AboutUsDataType = {
+  title: string;
+  logo: string;
+  storeButtons: StoreButton[];
+  descriptionOne: string;
+  descriptionTwo: string;
+
 export type ChefData = {
   title: string;
   chefName: string;
