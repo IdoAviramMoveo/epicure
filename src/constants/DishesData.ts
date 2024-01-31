@@ -40,6 +40,34 @@ const DishesData: Section = {
       foodIcon: veganFoodIcon,
       price: 65,
     },
+    {
+      title: "Pad Ki Mau",
+      image: padKiMao,
+      description: "Shrimps, Glass Noodles, Kemiri Nuts, Shallots, Lemon Grass, Magic Chili Brown Coconut",
+      foodIcon: spicyFoodIcon,
+      price: 88,
+    },
+    {
+      title: "Ta Ma La Ku",
+      image: taMaLaKo,
+      description: "Green Papaya, Mango, Chukka Chili, Mint, Kaffir lime, Cashew, Akaya Cham sauce",
+      foodIcon: veganFoodIcon,
+      price: 98,
+    },
+    {
+      title: "Purple Farm",
+      image: redFarm,
+      description: "Tofu, Spekkoek Peanuts, Spicy Manis, Pear Yakitori",
+      foodIcon: vegiFoodIcon,
+      price: 98,
+    },
+    {
+      title: "Pizza",
+      image: smokedPizza,
+      description: 'Basil dough, cashew "butter", demi-glace, bison & radish',
+      foodIcon: veganFoodIcon,
+      price: 65,
+    },
   ],
 };
 

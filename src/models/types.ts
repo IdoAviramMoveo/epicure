@@ -37,4 +37,11 @@ export type AboutUsDataType = {
   storeButtons: StoreButton[];
   descriptionOne: string;
   descriptionTwo: string;
+
+export type ChefData = {
+  title: string;
+  chefName: string;
+  image: string;
+  chefDescription: string;
+  restaurants: Section;
 };
