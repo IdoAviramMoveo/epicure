@@ -6,4 +6,13 @@
     flex-direction: column;
     gap: 80px;
   }
+
+  .cards-gallery {
+    @include desktop {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+      padding: 0 126px;
+    }
+  }
 }
