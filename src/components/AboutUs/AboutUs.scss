@@ -6,72 +6,122 @@
   padding: 24px 0 48px 20px;
   margin-top: 48px;
   background: $color-icons-background;
-  //height: 867px;
-
-  .app-logo {
-    width: 102px;
-    height: 95px;
+  @include desktop {
+    margin: 0;
+    padding: 40px 132px;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
   }
 
-  .store-buttons {
-    display: flex;
-    flex-direction: column;
-    width: 180px;
-    margin-top: 32px;
-    gap: 16px;
-
-    .store-button {
+  .app-logo {
+    //align-self: center;
+    width: 102px;
+    height: 95px;
+    @include desktop {
+      align-self: center;
       display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      padding: 7px 12px;
-      gap: 7px;
-      border-radius: 10px;
-      border: 0.5px solid #000;
-      text-align: center;
+      justify-self: center;
+      margin-left: 83.2px;
+      width: 178.221px;
+      height: 166px;
+    }
+  }
 
-      .store-text {
-        width: 125px;
-        .first-line {
-          @include font-style;
-          line-height: 18px;
-          letter-spacing: 1.29px;
-          font-size: 13.7px;
-          font-weight: 400;
-          align-self: stretch;
-        }
-        .second-line {
-          @include font-style;
-          line-height: 20px;
-          letter-spacing: 1.29px;
-          font-size: 16px;
-          font-weight: 400;
+  .description-and-buttons {
+    @include desktop {
+      display: flex;
+      flex-direction: column-reverse;
+      width: 70%;
+      gap: 16px;
+    }
+
+    .store-buttons {
+      display: flex;
+      flex-direction: column;
+      width: 180px;
+      margin-top: 32px;
+      gap: 16px;
+      @include desktop {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .store-button {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 7px 12px;
+        gap: 7px;
+        border-radius: 10px;
+        border: 0.5px solid #000;
+        text-align: center;
+
+        .store-text {
+          width: 125px;
+          .first-line {
+            @include font-style;
+            line-height: 18px;
+            letter-spacing: 1.29px;
+            font-size: 13.7px;
+            font-weight: 400;
+            align-self: stretch;
+          }
+          .second-line {
+            @include font-style;
+            line-height: 20px;
+            letter-spacing: 1.29px;
+            font-size: 16px;
+            font-weight: 400;
+          }
         }
       }
     }
-  }
 
-  .about-us {
-    margin-top: 48px;
-    .about-us-title {
-      @include font-style;
-      line-height: 35px;
-      text-transform: uppercase;
-      letter-spacing: 1.25px;
-      margin-bottom: 16px;
-    }
+    .about-us {
+      margin-top: 48px;
+      @include desktop {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .about-us-title {
+        @include font-style;
+        line-height: 35px;
+        text-transform: uppercase;
+        letter-spacing: 1.25px;
+        margin-bottom: 16px;
+        font-size: 18px;
+        @include desktop {
+          font-size: 30px;
+          letter-spacing: 2.14px;
+          margin-bottom: 0;
+        }
+      }
 
-    .about-us-description {
-      @include font-style;
-      font-size: 18px;
-      line-height: 28px;
-      letter-spacing: 2.14px;
-    }
-    .part-one {
-      padding-right: 25px;
-    }
-    .part-two {
-      padding-right: 50px;
+      .about-us-description {
+        @include font-style;
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: 2.14px;
+        @include desktop {
+          font-size: 20px;
+          line-height: 30px;
+          width: 70%;
+        }
+      }
+      .part-one {
+        padding-right: 25px;
+        @include desktop {
+          padding: 0;
+        }
+      }
+      .part-two {
+        padding-right: 50px;
+        @include desktop {
+          padding: 0;
+        }
+      }
     }
   }
 }
