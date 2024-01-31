@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Slide } from "react-awesome-reveal";
 
 import "./HomePage.scss";
 
