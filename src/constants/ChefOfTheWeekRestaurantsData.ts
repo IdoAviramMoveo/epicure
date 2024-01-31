@@ -4,7 +4,7 @@ import onzaRestaurant from "../assets/images/onzaRestaurant.png";
 import kitchenMarketRestaurant from "../assets/images/kitchenMarketRestaurant.png";
 import mashyaRestaurant from "../assets/images/mashyaRestaurant.png";
 
-const YossiRestaurantsData: Section = {
+const ChefOfTheWeekRestaurantsData: Section = {
   title: "yossi’s restaurants:",
   cards: [
     {
@@ -22,4 +22,4 @@ const YossiRestaurantsData: Section = {
   ],
 };
 
-export default YossiRestaurantsData;
+export default ChefOfTheWeekRestaurantsData;

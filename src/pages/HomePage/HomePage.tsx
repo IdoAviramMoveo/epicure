@@ -4,12 +4,12 @@ import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import CardsGallery from "../../components/CardsGallery/CardsGallery";
 import IconsMeaning from "../../components/IconsMeaning/IconsMeaning";
+import ChefOfTheWeek from "../../components/ChefOfTheWeek/ChefOfTheWeek";
 import Footer from "../../components/Footer/Footer";
 
 import { CardType } from "../../models/types";
 import RestaurantsData from "../../constants/RestaurantsData";
 import DishesData from "../../constants/DishesData";
-import YossiRestaurantsData from "../../constants/YossiRestaurantsData";
 import IconsData from "../../constants/IconsData";
 
 const HomePage = () => {
@@ -21,7 +21,7 @@ const HomePage = () => {
         <CardsGallery cardsData={RestaurantsData} cardType={CardType.RestaurantType} />
         <CardsGallery cardsData={DishesData} cardType={CardType.DishType} />
         <IconsMeaning icons={IconsData} />
-        <CardsGallery cardsData={YossiRestaurantsData} cardType={CardType.YossiRestaurantType} />
+        <ChefOfTheWeek />
       </div>
       <Footer />
     </>
