@@ -19,6 +19,7 @@ export const SwiperConfig = (spaceBetween: number) => ({
   },
   breakpoints: {
     900: {
+      autoplay: false,
       spaceBetween: spaceBetween,
       slidesPerView: "auto" as const,
     },

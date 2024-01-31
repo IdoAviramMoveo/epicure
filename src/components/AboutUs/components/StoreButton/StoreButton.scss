@@ -1,0 +1,32 @@
+@import "../../../../styles/mixins";
+
+.store-button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 7px 12px;
+  gap: 7px;
+  border-radius: 10px;
+  border: 0.5px solid #000;
+  text-align: center;
+  background-color: transparent;
+  cursor: pointer;
+  .store-text {
+    width: 125px;
+    .first-line {
+      @include font-style;
+      line-height: 18px;
+      letter-spacing: 1.29px;
+      font-size: 13.7px;
+      font-weight: 400;
+      align-self: stretch;
+    }
+    .second-line {
+      @include font-style;
+      line-height: 20px;
+      letter-spacing: 1.29px;
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+}

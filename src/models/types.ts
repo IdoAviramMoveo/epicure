@@ -25,7 +25,7 @@ export enum CardType {
   YossiRestaurantType = 3,
 }
 
-export type StoreButton = {
+export type StoreButtonProps = {
   icon: string;
   text: string;
   store: string;
@@ -34,7 +34,7 @@ export type StoreButton = {
 export type AboutUsDataType = {
   title: string;
   logo: string;
-  storeButtons: StoreButton[];
+  storeButtons: StoreButtonProps[];
   descriptionOne: string;
   descriptionTwo: string;
 };

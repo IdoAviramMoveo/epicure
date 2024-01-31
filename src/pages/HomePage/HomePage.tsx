@@ -19,10 +19,14 @@ const HomePage = () => {
       <Header />
       <div className='homepage-container'>
         <Hero />
-        <CardsGallery cardsData={RestaurantsData} cardType={CardType.RestaurantType} />
-        <CardsGallery cardsData={DishesData} cardType={CardType.DishType} />
+        <div className='cards-gallery'>
+          <CardsGallery cardsData={RestaurantsData} cardType={CardType.RestaurantType} />
+          <CardsGallery cardsData={DishesData} cardType={CardType.DishType} />
+        </div>
         <IconsMeaning icons={IconsData} />
-        <ChefOfTheWeek />
+        <div className='cards-gallery'>
+          <ChefOfTheWeek />
+        </div>
         <AboutUs />
       </div>
       <Footer />

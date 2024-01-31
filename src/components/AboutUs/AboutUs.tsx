@@ -1,4 +1,6 @@
 import "./AboutUs.scss";
+
+import StoreButton from "./components/StoreButton/StoreButton";
 import AboutUsData from "../../constants/AboutUsData";
 
 const AboutUs = () => {
@@ -8,12 +10,7 @@ const AboutUs = () => {
       <div className='description-and-buttons'>
         <div className='store-buttons'>
           {AboutUsData.storeButtons.map((button, index) => (
-            <div key={index} className={"store-button"}>
-              <img className='store-icon' src={button.icon} alt={`${button.store} Icon`} />
-              <div className='store-text'>
-                <div className='first-line'>{button.text}</div> <div className='second-line'>{button.store}</div>
-              </div>
-            </div>
+            <StoreButton key={index} icon={button.icon} text={button.text} store={button.store} />
           ))}
         </div>
         <div className='about-us'>
