@@ -11,12 +11,14 @@ const Modal: React.FC<ModalProps> = ({ card, onClose }) => {
   return (
     <div className='modal-backdrop' onClick={onClose}>
       <Fade cascade duration={300}>
-        <div className='modal-btn-container'>
-          <button className='modal-close-btn' onClick={onClose}>
-            <img src={xModal} alt='Close' />
-          </button>
+        <div className='modal-container'>
+          <div className='modal-btn-container'>
+            <button className='modal-close-btn' onClick={onClose}>
+              <img src={xModal} alt='Close' />
+            </button>
+          </div>
+          <Card {...card} className='modal' />
         </div>
-        <Card {...card} className='modal' />
       </Fade>
     </div>
   );

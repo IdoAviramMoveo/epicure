@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import "./HomePage.scss";
 
@@ -22,25 +22,9 @@ const HomePage = () => {
   const [selectedCard, setSelectedCard] = useState<CardProps | null>(null);
 
   const handleDishClick = (card: CardProps) => {
-    if (window.innerWidth > 900) {
-      setSelectedCard(card);
-      setIsModalOpen(true);
-    }
+    setSelectedCard(card);
+    setIsModalOpen(true);
   };
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 901 && isModalOpen) {
-        setIsModalOpen(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [isModalOpen]);
 
   return (
     <>
