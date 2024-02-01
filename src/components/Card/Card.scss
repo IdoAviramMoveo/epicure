@@ -220,14 +220,12 @@
   }
 
   .image-container {
-    width: 426px;
     height: 271px;
     @include desktop {
       width: 576px;
       height: 292px;
     }
     .card-image {
-      width: 426px;
       height: 271px;
       @include desktop {
         width: 576px;
