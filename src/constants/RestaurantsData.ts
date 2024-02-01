@@ -9,6 +9,8 @@ import onzaRestaurant from "../assets/images/onzaRestaurant.png";
 import tigerLillyRestaurant from "../assets/images/tigerLillyRestaurant.png";
 import yaPanRestaurant from "../assets/images/yaPanRestaurant.png";
 
+import twoStars from "../assets/images/twoStars.svg";
+import threeStars from "../assets/images/threeStars.svg";
 import fourStars from "../assets/images/fourStars.svg";
 
 const RestaurantsData: Section = {
@@ -24,14 +26,14 @@ const RestaurantsData: Section = {
       title: "Kab Kem",
       image: kabKemRestaurant,
       subtitle: "Yariv Malili",
-      rating: fourStars,
+      rating: twoStars,
     },
 
     {
       title: "Messa",
       image: messaRestaurant,
       subtitle: "Aviv Moshe",
-      rating: fourStars,
+      rating: threeStars,
     },
     {
       title: "Nitan Thai",
@@ -43,13 +45,13 @@ const RestaurantsData: Section = {
       title: "Tiger Lilly",
       image: tigerLillyRestaurant,
       subtitle: "Yanir Green",
-      rating: fourStars,
+      rating: twoStars,
     },
     {
       title: "Ya Pan",
       image: yaPanRestaurant,
       subtitle: "Yuval Ben Moshe",
-      rating: fourStars,
+      rating: threeStars,
     },
     {
       title: "Lumina",
@@ -61,7 +63,7 @@ const RestaurantsData: Section = {
       title: "Onza",
       image: onzaRestaurant,
       subtitle: "Chef Name",
-      rating: fourStars,
+      rating: threeStars,
     },
   ],
 };

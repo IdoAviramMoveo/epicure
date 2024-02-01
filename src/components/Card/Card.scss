@@ -9,6 +9,7 @@
     width: 380px;
     align-items: center;
     text-align: center;
+    cursor: pointer;
   }
 
   .image-container {
@@ -151,6 +152,7 @@
 
 .card.first-type {
   @include desktop {
+    cursor: auto;
     .image-container {
       height: 236px;
       .card-image {
@@ -171,6 +173,7 @@
 }
 
 .card.third-type {
+  cursor: auto;
   @include desktop {
     width: 231px;
     .image-container {
@@ -195,6 +198,127 @@
       gap: 0px;
       .card-title {
         height: 49px;
+      }
+    }
+  }
+}
+
+.card.modal {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 437px;
+  background-color: #fff;
+  padding: 0;
+  cursor: auto;
+  @include desktop {
+    position: unset;
+    align-items: center;
+    width: 573px;
+    height: 554px;
+    gap: 40px;
+  }
+
+  .image-container {
+    height: 271px;
+    @include desktop {
+      width: 576px;
+      height: 292px;
+    }
+    .card-image {
+      height: 271px;
+      @include desktop {
+        width: 576px;
+        height: 292px;
+      }
+    }
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+
+    @include desktop {
+      height: 182px;
+      width: 232px;
+      padding: 32px 37px 40px 20px;
+    }
+
+    .card-title {
+      font-size: 32px;
+      line-height: 26px;
+      letter-spacing: 2.67px;
+      font-weight: 400;
+      align-self: stretch;
+      @include desktop {
+        font-size: 32px;
+        text-align: center;
+      }
+    }
+
+    .description-icon-price {
+      display: flex;
+      .description-icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .card-description {
+          @include font-style;
+
+          height: auto;
+          font-size: 16px;
+          text-align: left;
+          line-height: 18px;
+          font-weight: 200;
+          letter-spacing: 1.97px;
+          @include desktop {
+            font-size: 14px;
+            text-align: center;
+          }
+        }
+
+        .food-icon {
+          @include mobile {
+            display: none;
+          }
+          width: 40px;
+          height: 30px;
+        }
+      }
+      .card-price {
+        display: none;
+        @include desktop {
+          display: flex;
+          flex-direction: row;
+          gap: 12px;
+
+          .line {
+            width: 83.5px;
+            height: 0.5px;
+            background: $color-grey-line;
+            align-self: center;
+          }
+          .value-logo-container {
+            display: flex;
+            flex-direction: row;
+
+            .ils-icon {
+              align-self: flex-end;
+              width: 11px;
+              height: 19px;
+            }
+
+            .price-value {
+              font-size: 24px;
+              text-align: center;
+              font-weight: 400;
+              line-height: 30px;
+              letter-spacing: 1px;
+            }
+          }
+        }
       }
     }
   }

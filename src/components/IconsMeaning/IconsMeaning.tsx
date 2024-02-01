@@ -1,4 +1,5 @@
 import React from "react";
+import { Slide } from "react-awesome-reveal";
 
 import "./IconsMeaning.scss";
 
@@ -8,17 +9,19 @@ export type IconsMeaningProps = {
 
 const IconsMeaning: React.FC<IconsMeaningProps> = ({ icons }) => {
   return (
-    <div className='icons-meaning-container'>
-      <h3 className='icons-title'>the meaning of our icons:</h3>
-      <div className='icons-meaning'>
-        {icons.map((icon) => (
-          <div className='icon' key={icon.name}>
-            <img className='icon-image' alt='Icon' src={icon.image} />
-            <h3 className='icon-meaning'>{icon.name}</h3>
-          </div>
-        ))}
+    <Slide>
+      <div className='icons-meaning-container'>
+        <h3 className='icons-title'>the meaning of our icons:</h3>
+        <div className='icons-meaning'>
+          {icons.map((icon) => (
+            <div className='icon' key={icon.name}>
+              <img className='icon-image' alt='Icon' src={icon.image} />
+              <h3 className='icon-meaning'>{icon.name}</h3>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </Slide>
   );
 };
 

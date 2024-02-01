@@ -17,6 +17,7 @@ export type Section = {
 export type CardsGalleryProps = {
   cardsData: Section;
   cardType: number;
+  onDishClick?: (dish: CardProps) => void;
 };
 
 export enum CardType {
@@ -45,4 +46,9 @@ export type ChefData = {
   image: string;
   chefDescription: string;
   restaurants: Section;
+};
+
+export type ModalProps = {
+  card: CardProps;
+  onClose: () => void;
 };
