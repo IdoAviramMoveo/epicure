@@ -21,6 +21,7 @@
     .swiper {
       width: 100%;
       max-width: 1185px;
+
       .swiper-slide {
         max-width: fit-content;
       }
@@ -40,19 +41,6 @@
       font-size: 30px;
       line-height: 35px;
       margin: 0;
-    }
-  }
-  .cards-section-title-three {
-    @extend .cards-section-title;
-    font-size: 16px;
-    @include desktop {
-      max-width: 1185px;
-      width: 100%;
-      font-size: 30px;
-      line-height: 35px;
-      text-align: left;
-      margin-left: auto;
-      margin-right: auto;
     }
   }
 
@@ -86,6 +74,29 @@
       cursor: pointer;
       width: 24px;
       height: 17.999px;
+    }
+  }
+}
+
+.cards-section-three {
+  @extend .cards-section;
+
+  .swiper {
+    @include desktop {
+      margin-left: 0;
+    }
+  }
+  .cards-section-title-three {
+    @extend .cards-section-title;
+    font-size: 16px;
+    @include desktop {
+      max-width: 1185px;
+      width: 100%;
+      font-size: 30px;
+      line-height: 35px;
+      text-align: left;
+      margin-left: 0;
+      margin-right: auto;
     }
   }
 }

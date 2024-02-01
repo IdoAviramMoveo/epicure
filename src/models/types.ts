@@ -49,6 +49,6 @@ export type ChefData = {
 };
 
 export type ModalProps = {
-  dish: CardProps;
+  card: CardProps;
   onClose: () => void;
 };

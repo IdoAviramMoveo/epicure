@@ -20,7 +20,7 @@ const CardsGallery: React.FC<CardsGalleryProps> = ({ cardsData, cardType, onDish
   return (
     <>
       <Fade>
-        <div className='cards-section'>
+        <div className={`cards-section${cardType === 3 ? "-three" : ""}`}>
           <h3 className={`cards-section-title${cardType === 3 ? "-three" : ""}`}>{cardsData.title}</h3>
           <Swiper className='swiper' {...SwiperConfig(spaceBetween)}>
             {cardsData.cards.map((card: CardProps) => (

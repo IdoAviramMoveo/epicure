@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "./HomePage.scss";
 
@@ -19,14 +19,28 @@ import { CardProps } from "../../models/types";
 
 const HomePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedDish, setSelectedDish] = useState<CardProps | null>(null);
+  const [selectedCard, setSelectedCard] = useState<CardProps | null>(null);
 
-  const handleDishClick = (dish: CardProps) => {
+  const handleDishClick = (card: CardProps) => {
     if (window.innerWidth > 900) {
-      setSelectedDish(dish);
+      setSelectedCard(card);
       setIsModalOpen(true);
     }
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 901 && isModalOpen) {
+        setIsModalOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [isModalOpen]);
 
   return (
     <>
@@ -45,7 +59,7 @@ const HomePage = () => {
       </div>
       <Footer />
 
-      {isModalOpen && selectedDish && <Modal dish={selectedDish} onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && selectedCard && <Modal card={selectedCard} onClose={() => setIsModalOpen(false)} />}
     </>
   );
 };
