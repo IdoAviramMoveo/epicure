@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import "./Header.scss";
 import hamburgerLogo from "../../assets/images/hamburgerLogo.svg";
-import epicureLogo from "../../assets/images/epicureLogo.png";
+import epicureLogo2 from "../../assets/images/epicureLogo2.png";
 import bagLogo from "../../assets/images/bagLogo.svg";
 import searchLogo from "../../assets/images/searchLogo.svg";
 import userLogo from "../../assets/images/userLogo.svg";
@@ -13,7 +13,7 @@ const Header = () => {
       <header className='header'>
         <img className='hamburger-menu' src={hamburgerLogo} alt='Menu' />
 
-        <img className='app-logo' src={epicureLogo} alt='Epicure Logo' />
+        <img className='app-logo' src={epicureLogo2} alt='Epicure Logo' />
 
         <div className='navbar-links'>
           <Link to='/' className='big-link'>
