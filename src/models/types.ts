@@ -52,3 +52,7 @@ export type ModalProps = {
   card: CardProps;
   onClose: () => void;
 };
+
+export type ChefOfTheWeekProps = {
+  chefData: ChefData;
+};

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux-toolkit/store";
 
 import "./HomePage.scss";
 
@@ -11,15 +13,16 @@ import AboutUs from "../../components/AboutUs/AboutUs";
 import Modal from "../../components/Modal/Modal";
 import Footer from "../../components/Footer/Footer";
 
-import { CardType } from "../../models/types";
-import RestaurantsData from "../../constants/RestaurantsData";
-import DishesData from "../../constants/DishesData";
+import { CardType, CardProps } from "../../models/types";
 import IconsData from "../../constants/IconsData";
-import { CardProps } from "../../models/types";
 
 const HomePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState<CardProps | null>(null);
+
+  const restaurantsData = useSelector((state: RootState) => state.homePage.restaurants);
+  const dishesData = useSelector((state: RootState) => state.homePage.dishes);
+  const chefOfTheWeekData = useSelector((state: RootState) => state.homePage.chefOfTheWeek);
 
   const handleDishClick = (card: CardProps) => {
     setSelectedCard(card);
@@ -32,12 +35,12 @@ const HomePage = () => {
       <div className='homepage-container'>
         <Hero />
         <div className='cards-gallery'>
-          <CardsGallery cardsData={RestaurantsData} cardType={CardType.RestaurantType} />
-          <CardsGallery cardsData={DishesData} cardType={CardType.DishType} onDishClick={handleDishClick} />
+          <CardsGallery cardsData={restaurantsData} cardType={CardType.RestaurantType} />
+          <CardsGallery cardsData={dishesData} cardType={CardType.DishType} onDishClick={handleDishClick} />
         </div>
         <IconsMeaning icons={IconsData} />
         <div className='cards-gallery'>
-          <ChefOfTheWeek />
+          <ChefOfTheWeek chefData={chefOfTheWeekData} />
         </div>
         <AboutUs />
       </div>
