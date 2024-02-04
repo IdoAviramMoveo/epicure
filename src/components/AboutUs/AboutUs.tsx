@@ -1,4 +1,4 @@
-import { Slide } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 
 import "./AboutUs.scss";
 
@@ -7,7 +7,7 @@ import AboutUsData from "../../constants/AboutUsData";
 
 const AboutUs = () => {
   return (
-    <Slide>
+    <Fade>
       <div className='about-us-container'>
         <img className='app-logo' src={AboutUsData.logo} alt='Epicure Logo' />
         <div className='description-and-buttons'>
@@ -23,7 +23,7 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-    </Slide>
+    </Fade>
   );
 };
 
