@@ -10,21 +10,10 @@ import { BackendChef } from "../adapters/chefAdapter";
 interface HomePageData {
   restaurants: Section;
   dishes: Section;
-  chefOfTheWeek: ChefData;
+  chefsOfTheWeek: ChefData[];
 }
 
-const defaultChefData: ChefData = {
-  title: "Chef Of The Week:",
-  chefName: "Default Chef",
-  image: "",
-  chefDescription: "Default description",
-  restaurants: {
-    title: "",
-    cards: [],
-  },
-};
-
-export const fetchHomePageData = createAsyncThunk<HomePageData>("homePage/fetchData", async (_, { getState }) => {
+export const fetchHomePageData = createAsyncThunk<HomePageData>("homePage/fetchData", async () => {
   const [restaurantsResponse, dishesResponse, chefsResponse] = await Promise.all([
     axios.get("http://localhost:3000/restaurants"),
     axios.get("http://localhost:3000/dishes"),
@@ -34,20 +23,23 @@ export const fetchHomePageData = createAsyncThunk<HomePageData>("homePage/fetchD
   const restaurants = transformRestaurantData(restaurantsResponse.data);
   const dishes = transformDishData(dishesResponse.data);
 
-  const chefOfTheWeekBackendData = chefsResponse.data.find((chef: BackendChef) => chef.title === "Yossi Shitrit");
+  // const chefsOfTheWeekPromises = chefsResponse.data.map(async (chef: BackendChef) => {
+  //   const chefRestaurantsResponse = await axios.get(`http://localhost:3000/chefs/${chef._id}/with-restaurants`);
+  //   return transformChefData(chef, transformRestaurantData(chefRestaurantsResponse.data.restaurants));
+  // });
 
-  const chefRestaurantsResponse = await axios.get(
-    `http://localhost:3000/chefs/${chefOfTheWeekBackendData._id}/with-restaurants`
-  );
-  const chefOfTheWeekRestaurants = transformRestaurantData(chefRestaurantsResponse.data.restaurants);
+  const chefsOfTheWeekPromises = chefsResponse.data
+    .filter((chef: BackendChef) => chef.canBeChefOfTheWeek)
+    .map(async (chef: BackendChef) => {
+      const chefRestaurantsResponse = await axios.get(`http://localhost:3000/chefs/${chef._id}/with-restaurants`);
+      return transformChefData(chef, transformRestaurantData(chefRestaurantsResponse.data.restaurants));
+    });
 
-  const chefOfTheWeek = chefOfTheWeekBackendData
-    ? transformChefData(chefOfTheWeekBackendData, chefOfTheWeekRestaurants)
-    : defaultChefData;
+  const chefsOfTheWeek = await Promise.all(chefsOfTheWeekPromises);
 
   return {
     restaurants,
     dishes,
-    chefOfTheWeek,
+    chefsOfTheWeek,
   };
 });
