@@ -1,5 +1,4 @@
-import { ChefData } from "../../models/types";
-import { Section } from "../../models/types";
+import { ChefData, Section } from "../../models/types";
 
 export interface BackendChef {
   _id: string;
