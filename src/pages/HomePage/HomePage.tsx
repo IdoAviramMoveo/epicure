@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux-toolkit/store";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState, AppDispatch } from "../../redux-toolkit/store";
+import { fetchHomePageData } from "../../redux-toolkit/thunks/homePageThunk";
 
 import "./HomePage.scss";
 
@@ -17,6 +18,8 @@ import { CardType, CardProps } from "../../models/types";
 import IconsData from "../../constants/IconsData";
 
 const HomePage = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState<CardProps | null>(null);
 
@@ -28,6 +31,10 @@ const HomePage = () => {
     setSelectedCard(card);
     setIsModalOpen(true);
   };
+
+  useEffect(() => {
+    dispatch(fetchHomePageData());
+  }, [dispatch]);
 
   return (
     <>

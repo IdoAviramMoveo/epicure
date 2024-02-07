@@ -1,9 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import RestaurantsData from "../../constants/RestaurantsData";
-import DishesData from "../../constants/DishesData";
-import ChefOfTheWeekData from "../../constants/ChefOfTheWeekData";
 import { Section, ChefData } from "../../models/types";
+import { fetchHomePageData } from "../thunks/homePageThunk";
 
 interface HomePageState {
   restaurants: Section;
@@ -12,9 +10,15 @@ interface HomePageState {
 }
 
 const initialState: HomePageState = {
-  restaurants: RestaurantsData,
-  dishes: DishesData,
-  chefOfTheWeek: ChefOfTheWeekData,
+  restaurants: { title: "", cards: [] },
+  dishes: { title: "", cards: [] },
+  chefOfTheWeek: {
+    title: "",
+    chefName: "",
+    image: "",
+    chefDescription: "",
+    restaurants: { title: "", cards: [] },
+  },
 };
 
 const homePageSlice = createSlice({
@@ -30,6 +34,13 @@ const homePageSlice = createSlice({
     setChefOfTheWeekData(state, action: PayloadAction<ChefData>) {
       state.chefOfTheWeek = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchHomePageData.fulfilled, (state, action) => {
+      state.restaurants = action.payload.restaurants;
+      state.dishes = action.payload.dishes;
+      state.chefOfTheWeek = action.payload.chefOfTheWeek;
+    });
   },
 });
 
