@@ -16,7 +16,7 @@ export const transformChefData = (chefData: BackendChef, restaurantsData: Sectio
   }));
 
   const restaurantsSection: Section = {
-    title: "Yossi’s Restaurants:",
+    title: `${chefData.title.split(" ")[0]}’s Restaurants:`,
     cards: chefOfTheWeekRestaurants,
   };
 

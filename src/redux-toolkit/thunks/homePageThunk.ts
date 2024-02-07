@@ -10,7 +10,7 @@ import { BackendChef } from "../adapters/chefAdapter";
 interface HomePageData {
   restaurants: Section;
   dishes: Section;
-  chefsOfTheWeek: ChefData[];
+  chefOfTheWeek: ChefData;
 }
 
 export const fetchHomePageData = createAsyncThunk<HomePageData>("homePage/fetchData", async () => {
@@ -23,11 +23,6 @@ export const fetchHomePageData = createAsyncThunk<HomePageData>("homePage/fetchD
   const restaurants = transformRestaurantData(restaurantsResponse.data);
   const dishes = transformDishData(dishesResponse.data);
 
-  // const chefsOfTheWeekPromises = chefsResponse.data.map(async (chef: BackendChef) => {
-  //   const chefRestaurantsResponse = await axios.get(`http://localhost:3000/chefs/${chef._id}/with-restaurants`);
-  //   return transformChefData(chef, transformRestaurantData(chefRestaurantsResponse.data.restaurants));
-  // });
-
   const chefsOfTheWeekPromises = chefsResponse.data
     .filter((chef: BackendChef) => chef.canBeChefOfTheWeek)
     .map(async (chef: BackendChef) => {
@@ -37,9 +32,11 @@ export const fetchHomePageData = createAsyncThunk<HomePageData>("homePage/fetchD
 
   const chefsOfTheWeek = await Promise.all(chefsOfTheWeekPromises);
 
+  const chefOfTheWeek: ChefData = chefsOfTheWeek[Math.floor(Math.random() * chefsOfTheWeek.length)];
+
   return {
     restaurants,
     dishes,
-    chefsOfTheWeek,
+    chefOfTheWeek,
   };
 });

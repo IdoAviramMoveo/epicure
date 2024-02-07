@@ -25,9 +25,7 @@ const HomePage = () => {
 
   const restaurantsData = useSelector((state: RootState) => state.homePage.restaurants);
   const dishesData = useSelector((state: RootState) => state.homePage.dishes);
-  const chefsOfTheWeekData = useSelector((state: RootState) => state.homePage.chefsOfTheWeek);
-
-  const chefOfTheWeekData = chefsOfTheWeekData.length > 0 ? chefsOfTheWeekData[0] : null;
+  const chefOfTheWeekData = useSelector((state: RootState) => state.homePage.chefOfTheWeek);
 
   const handleDishClick = (card: CardProps) => {
     setSelectedCard(card);
@@ -48,7 +46,10 @@ const HomePage = () => {
           <CardsGallery cardsData={dishesData} cardType={CardType.DishType} onDishClick={handleDishClick} />
         </div>
         <IconsMeaning icons={IconsData} />
-        <div className='cards-gallery'>{chefOfTheWeekData && <ChefOfTheWeek chefData={chefOfTheWeekData} />}</div>
+        <div className='cards-gallery'>
+          {" "}
+          <ChefOfTheWeek chefData={chefOfTheWeekData} />
+        </div>
         <AboutUs />
       </div>
       <Footer />

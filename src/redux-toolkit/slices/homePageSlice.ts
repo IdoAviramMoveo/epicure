@@ -6,13 +6,19 @@ import { fetchHomePageData } from "../thunks/homePageThunk";
 interface HomePageState {
   restaurants: Section;
   dishes: Section;
-  chefsOfTheWeek: ChefData[];
+  chefOfTheWeek: ChefData;
 }
 
 const initialState: HomePageState = {
   restaurants: { title: "", cards: [] },
   dishes: { title: "", cards: [] },
-  chefsOfTheWeek: [],
+  chefOfTheWeek: {
+    title: "",
+    chefName: "",
+    image: "",
+    chefDescription: "",
+    restaurants: { title: "", cards: [] },
+  },
 };
 
 const homePageSlice = createSlice({
@@ -25,15 +31,15 @@ const homePageSlice = createSlice({
     setDishesData(state, action: PayloadAction<Section>) {
       state.dishes = action.payload;
     },
-    setChefOfTheWeekData(state, action: PayloadAction<ChefData[]>) {
-      state.chefsOfTheWeek = action.payload;
+    setChefOfTheWeekData(state, action: PayloadAction<ChefData>) {
+      state.chefOfTheWeek = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchHomePageData.fulfilled, (state, action) => {
       state.restaurants = action.payload.restaurants;
       state.dishes = action.payload.dishes;
-      state.chefsOfTheWeek = action.payload.chefsOfTheWeek;
+      state.chefOfTheWeek = action.payload.chefOfTheWeek;
     });
   },
 });
