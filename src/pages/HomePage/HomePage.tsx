@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../redux-toolkit/store";
-import { fetchHomePageData } from "../../redux-toolkit/thunks/homePageThunk";
 
 import "./HomePage.scss";
 
@@ -14,22 +13,20 @@ import AboutUs from "../../components/AboutUs/AboutUs";
 import Modal from "../../components/Modal/Modal";
 import Footer from "../../components/Footer/Footer";
 
+import { fetchHomePageData } from "../../redux-toolkit/thunks/homePageThunk";
+import { openModal } from "../../redux-toolkit/slices/homePageSlice";
 import { CardType, CardProps } from "../../models/types";
 import IconsData from "../../constants/IconsData";
 
 const HomePage = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState<CardProps | null>(null);
-
-  const popularRestaurantsData = useSelector((state: RootState) => state.homePage.popularRestaurants);
-  const signatureDishesData = useSelector((state: RootState) => state.homePage.signatureDishes);
-  const chefOfTheWeekData = useSelector((state: RootState) => state.homePage.chefOfTheWeek);
+  const { popularRestaurants, signatureDishes, chefOfTheWeek, isModalOpen } = useSelector(
+    (state: RootState) => state.homePage
+  );
 
   const handleDishClick = (card: CardProps) => {
-    setSelectedCard(card);
-    setIsModalOpen(true);
+    dispatch(openModal(card));
   };
 
   useEffect(() => {
@@ -42,19 +39,19 @@ const HomePage = () => {
       <div className='homepage-container'>
         <Hero />
         <div className='cards-gallery'>
-          <CardsGallery cardsData={popularRestaurantsData} cardType={CardType.RestaurantType} />
-          <CardsGallery cardsData={signatureDishesData} cardType={CardType.DishType} onDishClick={handleDishClick} />
+          <CardsGallery cardsData={popularRestaurants} cardType={CardType.RestaurantType} />
+          <CardsGallery cardsData={signatureDishes} cardType={CardType.DishType} onDishClick={handleDishClick} />
         </div>
         <IconsMeaning icons={IconsData} />
         <div className='cards-gallery'>
           {" "}
-          <ChefOfTheWeek chefData={chefOfTheWeekData} />
+          <ChefOfTheWeek chefData={chefOfTheWeek} />
         </div>
         <AboutUs />
       </div>
       <Footer />
 
-      {isModalOpen && selectedCard && <Modal card={selectedCard} onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && <Modal />}
     </>
   );
 };
