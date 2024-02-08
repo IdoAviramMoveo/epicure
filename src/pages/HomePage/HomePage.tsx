@@ -23,8 +23,8 @@ const HomePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState<CardProps | null>(null);
 
-  const restaurantsData = useSelector((state: RootState) => state.homePage.restaurants);
-  const dishesData = useSelector((state: RootState) => state.homePage.dishes);
+  const popularRestaurantsData = useSelector((state: RootState) => state.homePage.popularRestaurants);
+  const signatureDishesData = useSelector((state: RootState) => state.homePage.signatureDishes);
   const chefOfTheWeekData = useSelector((state: RootState) => state.homePage.chefOfTheWeek);
 
   const handleDishClick = (card: CardProps) => {
@@ -42,8 +42,8 @@ const HomePage = () => {
       <div className='homepage-container'>
         <Hero />
         <div className='cards-gallery'>
-          <CardsGallery cardsData={restaurantsData} cardType={CardType.RestaurantType} />
-          <CardsGallery cardsData={dishesData} cardType={CardType.DishType} onDishClick={handleDishClick} />
+          <CardsGallery cardsData={popularRestaurantsData} cardType={CardType.RestaurantType} />
+          <CardsGallery cardsData={signatureDishesData} cardType={CardType.DishType} onDishClick={handleDishClick} />
         </div>
         <IconsMeaning icons={IconsData} />
         <div className='cards-gallery'>

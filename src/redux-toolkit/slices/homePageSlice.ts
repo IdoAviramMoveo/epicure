@@ -4,14 +4,14 @@ import { Section, ChefData } from "../../models/types";
 import { fetchHomePageData } from "../thunks/homePageThunk";
 
 interface HomePageState {
-  restaurants: Section;
-  dishes: Section;
+  popularRestaurants: Section;
+  signatureDishes: Section;
   chefOfTheWeek: ChefData;
 }
 
 const initialState: HomePageState = {
-  restaurants: { title: "", cards: [] },
-  dishes: { title: "", cards: [] },
+  popularRestaurants: { title: "", cards: [] },
+  signatureDishes: { title: "", cards: [] },
   chefOfTheWeek: {
     title: "",
     chefName: "",
@@ -25,11 +25,11 @@ const homePageSlice = createSlice({
   name: "homePage",
   initialState,
   reducers: {
-    setRestaurantsData(state, action: PayloadAction<Section>) {
-      state.restaurants = action.payload;
+    setPopularRestaurantsData(state, action: PayloadAction<Section>) {
+      state.popularRestaurants = action.payload;
     },
-    setDishesData(state, action: PayloadAction<Section>) {
-      state.dishes = action.payload;
+    setSignatureDishesData(state, action: PayloadAction<Section>) {
+      state.signatureDishes = action.payload;
     },
     setChefOfTheWeekData(state, action: PayloadAction<ChefData>) {
       state.chefOfTheWeek = action.payload;
@@ -37,13 +37,13 @@ const homePageSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchHomePageData.fulfilled, (state, action) => {
-      state.restaurants = action.payload.restaurants;
-      state.dishes = action.payload.dishes;
+      state.popularRestaurants = action.payload.popularRestaurants;
+      state.signatureDishes = action.payload.signatureDishes;
       state.chefOfTheWeek = action.payload.chefOfTheWeek;
     });
   },
 });
 
-export const { setRestaurantsData, setDishesData, setChefOfTheWeekData } = homePageSlice.actions;
+export const { setPopularRestaurantsData, setSignatureDishesData, setChefOfTheWeekData } = homePageSlice.actions;
 
 export default homePageSlice.reducer;

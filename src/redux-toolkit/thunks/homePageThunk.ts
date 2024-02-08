@@ -7,31 +7,30 @@ import { transformDishData } from "../adapters/dishAdapter";
 import { transformChefData } from "../adapters/chefAdapter";
 
 interface HomePageData {
-  restaurants: Section;
-  dishes: Section;
+  popularRestaurants: Section;
+  signatureDishes: Section;
   chefOfTheWeek: ChefData;
 }
 
 export const fetchHomePageData = createAsyncThunk<HomePageData>(
   "homePage/fetchData",
   async (): Promise<HomePageData> => {
-    const [restaurantsResponse, dishesResponse, chefOfTheWeekResponse] = await Promise.all([
-      axios.get("http://localhost:3000/restaurants"),
-      axios.get("http://localhost:3000/dishes"),
+    const [popularRestaurantsResponse, signatureDishesResponse, chefOfTheWeekResponse] = await Promise.all([
+      axios.get("http://localhost:3000/restaurants/popular"),
+      axios.get("http://localhost:3000/dishes/signature"),
       axios.get("http://localhost:3000/chefs/chef-of-the-week"),
     ]);
 
-    const restaurants = transformRestaurantData(restaurantsResponse.data);
-    const dishes = transformDishData(dishesResponse.data);
-
+    const popularRestaurants = transformRestaurantData(popularRestaurantsResponse.data);
+    const signatureDishes = transformDishData(signatureDishesResponse.data);
     const chefOfTheWeek: ChefData = transformChefData(
       chefOfTheWeekResponse.data,
       transformRestaurantData(chefOfTheWeekResponse.data.restaurants)
     );
 
     return {
-      restaurants,
-      dishes,
+      popularRestaurants,
+      signatureDishes,
       chefOfTheWeek,
     };
   }
