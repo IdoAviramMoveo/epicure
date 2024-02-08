@@ -5,7 +5,6 @@ import { Section, ChefData } from "../../models/types";
 import { transformRestaurantData } from "../adapters/restaurantAdapter";
 import { transformDishData } from "../adapters/dishAdapter";
 import { transformChefData } from "../adapters/chefAdapter";
-import { BackendChef } from "../adapters/chefAdapter";
 
 interface HomePageData {
   restaurants: Section;
@@ -16,25 +15,19 @@ interface HomePageData {
 export const fetchHomePageData = createAsyncThunk<HomePageData>(
   "homePage/fetchData",
   async (): Promise<HomePageData> => {
-    const [restaurantsResponse, dishesResponse, chefsResponse] = await Promise.all([
+    const [restaurantsResponse, dishesResponse, chefOfTheWeekResponse] = await Promise.all([
       axios.get("http://localhost:3000/restaurants"),
       axios.get("http://localhost:3000/dishes"),
-      axios.get("http://localhost:3000/chefs"),
+      axios.get("http://localhost:3000/chefs/chef-of-the-week"),
     ]);
 
     const restaurants = transformRestaurantData(restaurantsResponse.data);
     const dishes = transformDishData(dishesResponse.data);
 
-    const chefsOfTheWeekPromises = chefsResponse.data
-      .filter((chef: BackendChef) => chef.canBeChefOfTheWeek)
-      .map(async (chef: BackendChef) => {
-        const chefRestaurantsResponse = await axios.get(`http://localhost:3000/chefs/${chef._id}/with-restaurants`);
-        return transformChefData(chef, transformRestaurantData(chefRestaurantsResponse.data.restaurants));
-      });
-
-    const chefsOfTheWeek: ChefData[] = await Promise.all(chefsOfTheWeekPromises);
-
-    const chefOfTheWeek: ChefData = chefsOfTheWeek[Math.floor(Math.random() * chefsOfTheWeek.length)];
+    const chefOfTheWeek: ChefData = transformChefData(
+      chefOfTheWeekResponse.data,
+      transformRestaurantData(chefOfTheWeekResponse.data.restaurants)
+    );
 
     return {
       restaurants,

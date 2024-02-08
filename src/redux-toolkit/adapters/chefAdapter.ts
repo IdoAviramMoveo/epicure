@@ -6,7 +6,7 @@ export interface BackendChef {
   image: string;
   description: string;
   restaurants: string[];
-  canBeChefOfTheWeek: boolean;
+  isChefOfTheWeek: boolean;
 }
 
 export const transformChefData = (chefData: BackendChef, restaurantsData: Section): ChefData => {
