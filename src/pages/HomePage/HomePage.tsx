@@ -12,6 +12,7 @@ import ChefOfTheWeek from "../../components/ChefOfTheWeek/ChefOfTheWeek";
 import AboutUs from "../../components/AboutUs/AboutUs";
 import Modal from "../../components/Modal/Modal";
 import Footer from "../../components/Footer/Footer";
+import SearchedCards from "../../components/SearchedCards/SearchedCards";
 
 import { fetchHomePageData } from "../../redux-toolkit/thunks/homePageThunk";
 import { openModal } from "../../redux-toolkit/slices/homePageSlice";
@@ -24,6 +25,8 @@ const HomePage = () => {
   const { popularRestaurants, signatureDishes, chefOfTheWeek, isModalOpen } = useSelector(
     (state: RootState) => state.homePage
   );
+
+  const { isSearchActive } = useSelector((state: RootState) => state.search);
 
   const handleDishClick = (card: CardProps) => {
     dispatch(openModal(card));
@@ -38,15 +41,20 @@ const HomePage = () => {
       <Header />
       <div className='homepage-container'>
         <Hero />
-        <div className='cards-gallery'>
-          <CardsGallery cardsData={popularRestaurants} cardType={CardType.RestaurantType} />
-          <CardsGallery cardsData={signatureDishes} cardType={CardType.DishType} onDishClick={handleDishClick} />
-        </div>
-        <IconsMeaning icons={IconsData} />
-        <div className='cards-gallery'>
-          {" "}
-          <ChefOfTheWeek chefData={chefOfTheWeek} />
-        </div>
+        {isSearchActive ? (
+          <SearchedCards />
+        ) : (
+          <>
+            <div className='cards-gallery'>
+              <CardsGallery cardsData={popularRestaurants} cardType={CardType.RestaurantType} />
+              <CardsGallery cardsData={signatureDishes} cardType={CardType.DishType} onDishClick={handleDishClick} />
+            </div>
+            <IconsMeaning icons={IconsData} />
+            <div className='cards-gallery'>
+              <ChefOfTheWeek chefData={chefOfTheWeek} />
+            </div>
+          </>
+        )}
         <AboutUs />
       </div>
       <Footer />

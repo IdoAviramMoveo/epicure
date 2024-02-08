@@ -33,6 +33,7 @@ const getRatingImage = (rating: number): string => {
 };
 
 export const transformRestaurantData = (data: BackendRestaurant[]): Section => {
+  console.log(data);
   const cards = data.map((restaurant) => ({
     title: restaurant.title,
     image: restaurant.image,
