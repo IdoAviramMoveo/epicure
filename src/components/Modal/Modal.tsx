@@ -1,23 +1,32 @@
-import React from "react";
+import { useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Fade } from "react-awesome-reveal";
 
 import "./Modal.scss";
 
 import Card from "../Card/Card";
-import { ModalProps } from "../../models/types";
+import { closeModal } from "../../redux-toolkit/slices/homePageSlice";
+import { RootState } from "../../redux-toolkit/store";
 import xModal from "../../assets/images/xModal.svg";
 
-const Modal: React.FC<ModalProps> = ({ card, onClose }) => {
+const Modal = () => {
+  const dispatch = useDispatch();
+  const selectedCard = useSelector((state: RootState) => state.homePage.selectedCard);
+
+  const handleClose = useCallback(() => {
+    dispatch(closeModal());
+  }, [dispatch]);
+
   return (
-    <div className='modal-backdrop' onClick={onClose}>
+    <div className='modal-backdrop' onClick={handleClose}>
       <Fade cascade duration={300}>
-        <div className='modal-container'>
+        <div className='modal-container' onClick={(e) => e.stopPropagation()}>
           <div className='modal-btn-container'>
-            <button className='modal-close-btn' onClick={onClose}>
+            <button className='modal-close-btn' onClick={handleClose}>
               <img src={xModal} alt='Close' />
             </button>
           </div>
-          <Card {...card} className='modal' />
+          {selectedCard && <Card {...selectedCard} className='modal' />}
         </div>
       </Fade>
     </div>
