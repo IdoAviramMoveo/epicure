@@ -14,17 +14,6 @@ type SearchedChefsProps = {
   chefs: ChefData[];
 };
 
-/*
-<Swiper className='swiper' {...SwiperConfig(spaceBetween)}>
-            {cardsData.cards.map((card: CardProps) => (
-              <SwiperSlide className='swiper-slide' key={card.title}>
-                <div onClick={() => cardType === CardType.DishType && handleCardClick(card)}>
-                  <Card {...card} className={className} />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-*/
 const SearchedChefs: React.FC<SearchedChefsProps> = ({ chefs }) => {
   return (
     <div className='searched-chefs-container'>

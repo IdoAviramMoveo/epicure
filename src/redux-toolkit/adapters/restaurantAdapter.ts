@@ -1,5 +1,4 @@
-import { Section } from "../../models/types";
-import { getRatingImage } from "../../utils/redux-utils";
+import { apiService } from "../../services/apiService";
 
 export interface BackendRestaurant {
   _id: string;
@@ -10,16 +9,12 @@ export interface BackendRestaurant {
   dishes: string[];
 }
 
-export const transformRestaurantData = (data: BackendRestaurant[]): Section => {
-  const cards = data.map((restaurant) => ({
-    title: restaurant.title,
-    image: restaurant.image,
-    subtitle: restaurant.chef.title,
-    rating: getRatingImage(restaurant.rating),
-  }));
+class RestaurantAdapter {
+  static readonly endpoint = "/restaurants";
+  async getPopularRestaurants(): Promise<BackendRestaurant[]> {
+    const response = await apiService.get<BackendRestaurant[]>(`${RestaurantAdapter.endpoint}/popular`);
+    return response.data;
+  }
+}
 
-  return {
-    title: "POPULAR RESTAURANT IN EPICURE:",
-    cards,
-  };
-};
+export const restaurantAdapter = new RestaurantAdapter();

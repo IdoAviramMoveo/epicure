@@ -1,18 +1,41 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
 const URL = "http://localhost:3000";
 
-export const apiService = {
-  getPopularRestaurants() {
-    return axios.get(`${URL}/restaurants/popular`);
-  },
-  getSignatureDishes() {
-    return axios.get(`${URL}/dishes/signature`);
-  },
-  getChefOfTheWeek() {
-    return axios.get(`${URL}/chefs/chef-of-the-week`);
-  },
-  searchAll(searchTerm: string) {
-    return axios.get(`${URL}/search?term=${searchTerm}`);
-  },
-};
+class ApiService {
+  async get<T>(
+    url: string,
+    headers?: AxiosRequestConfig["headers"],
+    options: AxiosRequestConfig = {}
+  ): Promise<AxiosResponse<T>> {
+    return axios.get<T>(`${URL}${url}`, { ...options, headers });
+  }
+
+  async post<T>(
+    url: string,
+    data: unknown,
+    headers?: AxiosRequestConfig["headers"],
+    options: AxiosRequestConfig = {}
+  ): Promise<AxiosResponse<T>> {
+    return axios.post<T>(`${URL}${url}`, data, { ...options, headers });
+  }
+
+  async put<T>(
+    url: string,
+    data: unknown,
+    headers?: AxiosRequestConfig["headers"],
+    options: AxiosRequestConfig = {}
+  ): Promise<AxiosResponse<T>> {
+    return axios.put<T>(`${URL}${url}`, data, { ...options, headers });
+  }
+
+  async delete<T>(
+    url: string,
+    headers?: AxiosRequestConfig["headers"],
+    options: AxiosRequestConfig = {}
+  ): Promise<AxiosResponse<T>> {
+    return axios.delete<T>(`${URL}${url}`, { ...options, headers });
+  }
+}
+
+export const apiService = new ApiService();

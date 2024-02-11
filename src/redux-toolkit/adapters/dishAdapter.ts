@@ -1,7 +1,6 @@
-import { Section } from "../../models/types";
-import { getFoodIcon } from "../../utils/redux-utils";
+import { apiService } from "../../services/apiService";
 
-interface BackendDish {
+export interface BackendDish {
   _id: string;
   title: string;
   image: string;
@@ -11,17 +10,12 @@ interface BackendDish {
   restaurant: string;
 }
 
-export const transformDishData = (data: BackendDish[]): Section => {
-  const cards = data.map((dish) => ({
-    title: dish.title,
-    image: dish.image,
-    description: dish.ingredients.join(", "),
-    foodIcon: getFoodIcon(dish.tags[0]),
-    price: dish.price,
-  }));
+class DishAdapter {
+  static readonly endpoint = "/dishes";
+  async getSignatureDishes(): Promise<BackendDish[]> {
+    const response = await apiService.get<BackendDish[]>(`${DishAdapter.endpoint}/signature`);
+    return response.data;
+  }
+}
 
-  return {
-    title: "SIGNATURE DISH OF:",
-    cards,
-  };
-};
+export const dishAdapter = new DishAdapter();

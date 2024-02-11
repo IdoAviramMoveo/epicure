@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { apiService } from "../../services/apiService";
 import { Section, ChefData } from "../../models/types";
-import { transformRestaurantData } from "../adapters/restaurantAdapter";
-import { transformDishData } from "../adapters/dishAdapter";
-import { transformChefData } from "../adapters/chefAdapter";
+import { restaurantAdapter } from "../adapters/restaurantAdapter";
+import { dishAdapter } from "../adapters/dishAdapter";
+import { chefAdapter } from "../adapters/chefAdapter";
+import { transformRestaurantData, transformDishData, transformChefData } from "../../utils/redux-utils";
 
 interface HomePageData {
   popularRestaurants: Section;
@@ -12,26 +12,14 @@ interface HomePageData {
   chefOfTheWeek: ChefData;
 }
 
-export const fetchHomePageData = createAsyncThunk<HomePageData>(
-  "homePage/fetchData",
-  async (): Promise<HomePageData> => {
-    const [popularRestaurantsResponse, signatureDishesResponse, chefOfTheWeekResponse] = await Promise.all([
-      apiService.getPopularRestaurants(),
-      apiService.getSignatureDishes(),
-      apiService.getChefOfTheWeek(),
-    ]);
+export const fetchHomePageData = createAsyncThunk("homePage/fetchData", async (): Promise<HomePageData> => {
+  const popularRestaurants = await restaurantAdapter.getPopularRestaurants();
+  const signatureDishes = await dishAdapter.getSignatureDishes();
+  const chefOfTheWeek = await chefAdapter.getChefOfTheWeek();
 
-    const popularRestaurants = transformRestaurantData(popularRestaurantsResponse.data);
-    const signatureDishes = transformDishData(signatureDishesResponse.data);
-    const chefOfTheWeek: ChefData = transformChefData(
-      chefOfTheWeekResponse.data,
-      transformRestaurantData(chefOfTheWeekResponse.data.restaurants)
-    );
-
-    return {
-      popularRestaurants,
-      signatureDishes,
-      chefOfTheWeek,
-    };
-  }
-);
+  return {
+    popularRestaurants: transformRestaurantData(popularRestaurants),
+    signatureDishes: transformDishData(signatureDishes),
+    chefOfTheWeek: transformChefData(chefOfTheWeek, transformRestaurantData(chefOfTheWeek.restaurants)),
+  };
+});

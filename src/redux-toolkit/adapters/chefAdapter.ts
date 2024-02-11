@@ -1,30 +1,21 @@
-import { ChefData, Section } from "../../models/types";
+import { apiService } from "../../services/apiService";
+import { BackendRestaurant } from "./restaurantAdapter";
 
 export interface BackendChef {
   _id: string;
   title: string;
   image: string;
   description: string;
-  restaurants: string[];
+  restaurants: BackendRestaurant[];
   isChefOfTheWeek: boolean;
 }
 
-export const transformChefData = (chefData: BackendChef, restaurantsData: Section): ChefData => {
-  const chefOfTheWeekRestaurants = restaurantsData.cards.map((restaurant) => ({
-    title: restaurant.title,
-    image: restaurant.image,
-  }));
+class ChefAdapter {
+  static readonly endpoint = "/chefs";
+  async getChefOfTheWeek(): Promise<BackendChef> {
+    const response = await apiService.get<BackendChef>(`${ChefAdapter.endpoint}/chef-of-the-week`);
+    return response.data;
+  }
+}
 
-  const restaurantsSection: Section = {
-    title: `${chefData.title.split(" ")[0]}’s Restaurants:`,
-    cards: chefOfTheWeekRestaurants,
-  };
-
-  return {
-    title: "Chef Of The Week:",
-    chefName: chefData.title,
-    image: chefData.image,
-    chefDescription: chefData.description,
-    restaurants: restaurantsSection,
-  };
-};
+export const chefAdapter = new ChefAdapter();
