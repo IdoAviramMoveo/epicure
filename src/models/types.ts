@@ -17,13 +17,13 @@ export type Section = {
 export type CardsGalleryProps = {
   cardsData: Section;
   cardType: number;
-  onDishClick?: (dish: CardProps) => void;
+  isSearch?: boolean;
 };
 
 export enum CardType {
   RestaurantType = 1,
   DishType = 2,
-  YossiRestaurantType = 3,
+  ChefRestaurantType = 3,
 }
 
 export type StoreButtonProps = {

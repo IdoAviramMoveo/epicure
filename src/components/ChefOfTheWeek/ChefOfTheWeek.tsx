@@ -19,7 +19,7 @@ const ChefOfTheWeek: React.FC<ChefOfTheWeekProps> = ({ chefData }) => {
         </div>
       </div>
       <div className='chef-restaurants'>
-        <CardsGallery cardsData={chefData.restaurants} cardType={CardType.YossiRestaurantType} />
+        <CardsGallery cardsData={chefData.restaurants} cardType={CardType.ChefRestaurantType} />
       </div>
     </>
   );

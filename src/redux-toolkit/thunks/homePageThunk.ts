@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 
+import { apiService } from "../../services/apiService";
 import { Section, ChefData } from "../../models/types";
 import { transformRestaurantData } from "../adapters/restaurantAdapter";
 import { transformDishData } from "../adapters/dishAdapter";
@@ -16,9 +16,9 @@ export const fetchHomePageData = createAsyncThunk<HomePageData>(
   "homePage/fetchData",
   async (): Promise<HomePageData> => {
     const [popularRestaurantsResponse, signatureDishesResponse, chefOfTheWeekResponse] = await Promise.all([
-      axios.get("http://localhost:3000/restaurants/popular"),
-      axios.get("http://localhost:3000/dishes/signature"),
-      axios.get("http://localhost:3000/chefs/chef-of-the-week"),
+      apiService.getPopularRestaurants(),
+      apiService.getSignatureDishes(),
+      apiService.getChefOfTheWeek(),
     ]);
 
     const popularRestaurants = transformRestaurantData(popularRestaurantsResponse.data);

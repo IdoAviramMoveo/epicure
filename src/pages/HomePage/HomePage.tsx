@@ -15,8 +15,7 @@ import Footer from "../../components/Footer/Footer";
 import SearchedCards from "../../components/SearchedCards/SearchedCards";
 
 import { fetchHomePageData } from "../../redux-toolkit/thunks/homePageThunk";
-import { openModal } from "../../redux-toolkit/slices/homePageSlice";
-import { CardType, CardProps } from "../../models/types";
+import { CardType } from "../../models/types";
 import IconsData from "../../constants/IconsData";
 
 const HomePage = () => {
@@ -27,10 +26,6 @@ const HomePage = () => {
   );
 
   const { isSearchActive } = useSelector((state: RootState) => state.search);
-
-  const handleDishClick = (card: CardProps) => {
-    dispatch(openModal(card));
-  };
 
   useEffect(() => {
     dispatch(fetchHomePageData());
@@ -47,7 +42,7 @@ const HomePage = () => {
           <>
             <div className='cards-gallery'>
               <CardsGallery cardsData={popularRestaurants} cardType={CardType.RestaurantType} />
-              <CardsGallery cardsData={signatureDishes} cardType={CardType.DishType} onDishClick={handleDishClick} />
+              <CardsGallery cardsData={signatureDishes} cardType={CardType.DishType} />
             </div>
             <IconsMeaning icons={IconsData} />
             <div className='cards-gallery'>

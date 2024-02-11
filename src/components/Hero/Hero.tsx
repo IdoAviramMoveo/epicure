@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { searchAll } from "../../redux-toolkit/thunks/searchThunk";
 import { AppDispatch } from "../../redux-toolkit/store";
@@ -11,10 +11,9 @@ const Hero = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleSearch = () => {
-    console.log(searchTerm);
+  const handleSearch = useCallback(() => {
     dispatch(searchAll(searchTerm));
-  };
+  }, [dispatch, searchTerm]);
 
   return (
     <div className='hero-container'>

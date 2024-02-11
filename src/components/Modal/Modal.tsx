@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Fade } from "react-awesome-reveal";
 
@@ -12,9 +13,9 @@ const Modal = () => {
   const dispatch = useDispatch();
   const selectedCard = useSelector((state: RootState) => state.homePage.selectedCard);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     dispatch(closeModal());
-  };
+  }, [dispatch]);
 
   return (
     <div className='modal-backdrop' onClick={handleClose}>
