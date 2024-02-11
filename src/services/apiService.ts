@@ -1,9 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-import dotenv from "dotenv";
 
-dotenv.config();
-
-const URL = process.env.API_URL;
+const URL = process.env.REACT_APP_API_URL;
+console.log("API Base URL:", URL);
 
 class ApiService {
   async get<T>(
