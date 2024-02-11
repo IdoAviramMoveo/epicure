@@ -1,6 +1,9 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import dotenv from "dotenv";
 
-const URL = "http://localhost:3000";
+dotenv.config();
+
+const URL = process.env.API_URL;
 
 class ApiService {
   async get<T>(
