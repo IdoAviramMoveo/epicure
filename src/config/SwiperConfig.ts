@@ -6,10 +6,6 @@ export const SwiperConfig = (spaceBetween: number) => ({
   spaceBetween: 24,
   slidesPerView: "auto" as const,
   loop: true,
-  autoplay: {
-    delay: 2500,
-    disableOnInteraction: false,
-  },
   coverflowEffect: {
     rotate: 50,
     stretch: 0,

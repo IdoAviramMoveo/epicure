@@ -15,6 +15,15 @@ const Hero = () => {
     dispatch(searchAll(searchTerm));
   }, [dispatch, searchTerm]);
 
+  const handleKeyPress = useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === "Enter") {
+        handleSearch();
+      }
+    },
+    [handleSearch]
+  );
+
   return (
     <div className='hero-container'>
       <div className='hero-overlay'>
@@ -29,6 +38,7 @@ const Hero = () => {
               placeholder='Search for restaurant cuisine, chef'
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyDown={handleKeyPress}
             />
           </div>
         </div>
