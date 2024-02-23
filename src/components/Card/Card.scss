@@ -43,9 +43,12 @@
       font-size: 18px;
       font-weight: 400;
       letter-spacing: 2.67px;
+      overflow-y: scroll;
       @include desktop {
         font-size: 40px;
         line-height: 47px;
+        max-height: 47px;
+        overflow-y: scroll;
         font-style: normal;
       }
     }
@@ -82,6 +85,7 @@
           font-size: 16px;
           line-height: 20px;
           letter-spacing: 1.97px;
+          overflow-y: scroll;
           @include desktop {
             width: 295px;
             height: 123px;
