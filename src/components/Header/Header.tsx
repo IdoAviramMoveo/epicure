@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import "./Header.scss";
 import hamburgerLogo from "../../assets/images/hamburgerLogo.svg";
@@ -8,21 +8,32 @@ import searchLogo from "../../assets/images/searchLogo.svg";
 import userLogo from "../../assets/images/userLogo.svg";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleLinkClick = (path: string) => {
+    if (location.pathname === path) {
+      navigate(0);
+    } else {
+      navigate(path);
+    }
+  };
+
   return (
     <>
       <header className='header'>
         <img className='hamburger-menu' src={hamburgerLogo} alt='Menu' />
 
-        <img className='app-logo' src={epicureLogo2} alt='Epicure Logo' />
+        <img className='app-logo' src={epicureLogo2} alt='Epicure Logo' onClick={() => handleLinkClick("/")} />
 
         <div className='navbar-links'>
-          <Link to='/' className='big-link'>
+          <Link to='/' className='big-link' onClick={() => handleLinkClick("/")}>
             EPICURE
           </Link>
-          <Link to='/' className='small-link'>
+          <Link to='/' className='small-link' onClick={() => handleLinkClick("/")}>
             Restaurants
           </Link>
-          <Link to='/' className='small-link'>
+          <Link to='/' className='small-link' onClick={() => handleLinkClick("/")}>
             Chefs
           </Link>
         </div>
