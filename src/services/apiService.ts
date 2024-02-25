@@ -3,11 +3,7 @@ import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 const URL = process.env.REACT_APP_API_URL;
 
 class ApiService {
-  async get<T>(
-    url: string,
-    headers?: AxiosRequestConfig["headers"],
-    options: AxiosRequestConfig = {}
-  ): Promise<AxiosResponse<T>> {
+  async get<T>(url: string, headers?: AxiosRequestConfig["headers"], options: AxiosRequestConfig = {}): Promise<AxiosResponse<T>> {
     return axios.get<T>(`${URL}${url}`, { ...options, headers });
   }
 
@@ -29,11 +25,7 @@ class ApiService {
     return axios.put<T>(`${URL}${url}`, data, { ...options, headers });
   }
 
-  async delete<T>(
-    url: string,
-    headers?: AxiosRequestConfig["headers"],
-    options: AxiosRequestConfig = {}
-  ): Promise<AxiosResponse<T>> {
+  async delete<T>(url: string, headers?: AxiosRequestConfig["headers"], options: AxiosRequestConfig = {}): Promise<AxiosResponse<T>> {
     return axios.delete<T>(`${URL}${url}`, { ...options, headers });
   }
 }

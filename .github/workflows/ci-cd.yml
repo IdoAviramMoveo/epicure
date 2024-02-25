@@ -1,0 +1,29 @@
+name: CI/CD Pipeline for Epicure Frontend
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Deploy to EC2
+        run: |
+          echo "Deploying to EC2"
+          # Sync build directory to EC2 instance
+          rsync -avz --delete ./build/ ubuntu@34.234.96.20:/var/www/epicure-front/
+          # Reload Nginx to serve updated files
+          ssh ubuntu@34.234.96.20 "sudo systemctl reload nginx"
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
