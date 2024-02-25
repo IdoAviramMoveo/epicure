@@ -7,23 +7,30 @@ import { Section, ChefData } from "../models/types";
 import spicyFoodIcon from "../assets/images/spicyFoodIcon.svg";
 import veganFoodIcon from "../assets/images/veganFoodIcon.svg";
 import vegiFoodIcon from "../assets/images/vegiFoodIcon.svg";
+import placeholderIcon from "../assets/images/placeHolderIcon.png";
 import oneStar from "../assets/images/oneStar.svg";
 import twoStars from "../assets/images/twoStars.svg";
 import threeStars from "../assets/images/threeStars.svg";
 import fourStars from "../assets/images/fourStars.svg";
 import fiveStars from "../assets/images/fiveStars.svg";
 
-export const getFoodIcon = (foodIcon: string): string | undefined => {
-  switch (foodIcon) {
-    case "Spicy":
-      return spicyFoodIcon;
-    case "Vegan":
-      return veganFoodIcon;
-    case "Vegi":
-      return vegiFoodIcon;
-    default:
-      return undefined;
-  }
+export const getFoodIcon = (tags: string[]): string[] => {
+  if (!tags.length) return [placeholderIcon];
+
+  return tags
+    .map((tag) => {
+      switch (tag) {
+        case "Spicy":
+          return spicyFoodIcon;
+        case "Vegan":
+          return veganFoodIcon;
+        case "Vegi":
+          return vegiFoodIcon;
+        default:
+          return undefined;
+      }
+    })
+    .filter((icon): icon is string => icon !== undefined);
 };
 
 export const getRatingImage = (rating: number): string => {
@@ -68,7 +75,7 @@ export const transformDishData = (data: BackendDish[]): Section => {
     title: dish.title,
     image: dish.image,
     description: dish.ingredients.join(", "),
-    foodIcon: getFoodIcon(dish.tags[0]),
+    foodIcons: getFoodIcon(dish.tags),
     price: dish.price,
   }));
 
