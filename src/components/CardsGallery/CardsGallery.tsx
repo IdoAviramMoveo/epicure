@@ -27,16 +27,13 @@ const CardsGallery: React.FC<CardsGalleryProps> = ({ cardsData, cardType, isSear
   );
 
   const spaceBetween: number = cardType === 3 ? 16 : 24;
-  const className =
-    cardType === CardType.ChefRestaurantType ? "third-type" : cardType === CardType.RestaurantType ? "first-type" : "";
+  const className = cardType === CardType.ChefRestaurantType ? "third-type" : cardType === CardType.RestaurantType ? "first-type" : "";
   return (
     <>
       <Fade>
         <div className={`cards-section${cardType === CardType.ChefRestaurantType ? "-three" : ""}`}>
           {!isSearch && (
-            <h3 className={`cards-section-title${cardType === CardType.ChefRestaurantType ? "-three" : ""}`}>
-              {cardsData.title}
-            </h3>
+            <h3 className={`cards-section-title${cardType === CardType.ChefRestaurantType ? "-three" : ""}`}>{cardsData.title}</h3>
           )}
           <Swiper className='swiper' {...SwiperConfig(spaceBetween)}>
             {cardsData.cards.map((card: CardProps) => (

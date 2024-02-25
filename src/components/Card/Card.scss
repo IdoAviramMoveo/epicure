@@ -82,6 +82,11 @@
           font-size: 16px;
           line-height: 20px;
           letter-spacing: 1.97px;
+          overflow-y: scroll;
+          scrollbar-width: none;
+          &::-webkit-scrollbar {
+            display: none;
+          }
           @include desktop {
             width: 295px;
             height: 123px;
@@ -91,14 +96,19 @@
           }
         }
 
-        .food-icon {
-          width: 30px;
-          height: 24px;
-          @include desktop {
-            width: 39.757px;
-            height: 29.68px;
-            display: flex;
-            justify-content: center;
+        .food-icons {
+          display: flex;
+          flex-direction: row;
+          gap: 16px;
+          .food-icon {
+            width: 30px;
+            height: 24px;
+            @include desktop {
+              width: 39.757px;
+              height: 29.68px;
+              display: flex;
+              justify-content: center;
+            }
           }
         }
       }
@@ -214,7 +224,7 @@
   @include desktop {
     position: unset;
     align-items: center;
-    width: 573px;
+    width: 450px;
     height: 554px;
     gap: 40px;
   }
@@ -222,13 +232,13 @@
   .image-container {
     height: 271px;
     @include desktop {
-      width: 576px;
+      width: 450px;
       height: 292px;
     }
     .card-image {
       height: 271px;
       @include desktop {
-        width: 576px;
+        width: 450px;
         height: 292px;
       }
     }
@@ -266,7 +276,6 @@
         align-items: center;
         .card-description {
           @include font-style;
-
           height: auto;
           font-size: 16px;
           text-align: left;
@@ -279,12 +288,14 @@
           }
         }
 
-        .food-icon {
-          @include mobile {
-            display: none;
+        .food-icons {
+          .food-icon {
+            @include mobile {
+              display: none;
+            }
+            width: 40px;
+            height: 30px;
           }
-          width: 40px;
-          height: 30px;
         }
       }
       .card-price {

@@ -3,7 +3,7 @@ import { CardProps } from "../../models/types";
 
 import ilsLogo from "../../assets/images/ilsLogo.svg";
 
-const Card: React.FC<CardProps> = ({ title, image, subtitle, description, foodIcon, price, className, rating }) => {
+const Card: React.FC<CardProps> = ({ title, image, subtitle, description, foodIcons, price, className, rating }) => {
   return (
     <div className={`card ${className || ""}`}>
       <div className='image-container'>
@@ -15,7 +15,9 @@ const Card: React.FC<CardProps> = ({ title, image, subtitle, description, foodIc
           <div className='description-icon'>
             {subtitle && <h4 className='card-subtitle'>{subtitle}</h4>}
             {description && <p className='card-description'>{description}</p>}
-            {foodIcon && <img src={foodIcon} alt='Food Icon' className='food-icon' />}
+            <div className='food-icons'>
+              {foodIcons && foodIcons.map((icon, index) => <img key={index} src={icon} alt='Food Icon' className='food-icon' />)}
+            </div>
           </div>
           {rating && <img src={rating} alt='Rating Stars' className='rating-image' />}
           {price && (

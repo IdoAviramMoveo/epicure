@@ -3,7 +3,7 @@ export type CardProps = {
   image: string;
   subtitle?: string;
   description?: string;
-  foodIcon?: string;
+  foodIcons?: string[];
   price?: number;
   className?: string;
   rating?: string;
