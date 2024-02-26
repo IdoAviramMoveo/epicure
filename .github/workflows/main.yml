@@ -1,0 +1,25 @@
+name: ci cd client - dev
+on:
+  - workflow_dispatch
+jobs:
+  build:
+    name: Run test and deploy
+    runs-on:
+      - self-hosted
+      - client-dev
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          clean: false
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_REACT_APP_API_URL: http://3.94.196.254/api
+
+          file_name: .env
+          fail_on_empty: false
+      - name: npm install
+        run: npm install
+      - name: npm build
+        run: npm run build
