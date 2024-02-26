@@ -1,0 +1,32 @@
+name: Deploy Epicure-Front to EC2
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Node.js dependencies
+        run: npm install
+
+      - name: Build React App
+        run: npm run build
+
+      - name: Transfer build to EC2
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          scp -o StrictHostKeyChecking=no -r build/ ubuntu@ec2-3-88-68-30.compute-1.amazonaws.com:~/epicure-front/new-build
+          ssh -o StrictHostKeyChecking=no ubuntu@ec2-3-88-68-30.compute-1.amazonaws.com '~/scripts/deploy_epicure_front.sh'
+          rm -f ~/.ssh/id_rsa
+
+      - name: Clean up
+        run: echo "Deployment completed"
