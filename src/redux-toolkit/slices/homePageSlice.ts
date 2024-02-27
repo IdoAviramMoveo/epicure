@@ -56,7 +56,6 @@ const homePageSlice = createSlice({
   },
 });
 
-export const { setPopularRestaurantsData, setSignatureDishesData, setChefOfTheWeekData, openModal, closeModal } =
-  homePageSlice.actions;
+export const { setPopularRestaurantsData, setSignatureDishesData, setChefOfTheWeekData, openModal, closeModal } = homePageSlice.actions;
 
 export default homePageSlice.reducer;
