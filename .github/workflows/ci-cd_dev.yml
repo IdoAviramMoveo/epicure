@@ -13,12 +13,8 @@ jobs:
         with:
           clean: false
       - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1.3
-        with:
-          envkey_REACT_APP_API_URL: http://34.229.153.54/api
-
-          file_name: .env
-          fail_on_empty: false
+        run: |
+          echo "REACT_APP_API_URL=http://34.229.153.54/api" > .env
       - name: npm install
         run: npm install
       - name: npm build
