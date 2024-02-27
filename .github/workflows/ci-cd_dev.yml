@@ -1,35 +1,21 @@
 name: ci cd client - dev
 on:
   - workflow_dispatch
-
 jobs:
   build:
     name: Run test and deploy
     runs-on:
       - self-hosted
       - client-dev
-    timeout-minutes: 20
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           clean: false
-
-      - name: Cache Node.js modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: Make envfile
         run: |
           echo "REACT_APP_API_URL=http://34.229.153.54/api" > .env
-
-      - name: npm ci
-        run: npm ci --verbose
-        timeout-minutes: 15
-
+      - name: npm install
+        run: npm install
       - name: npm build
         run: npm run build
