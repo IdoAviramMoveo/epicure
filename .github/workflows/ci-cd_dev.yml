@@ -6,7 +6,7 @@ jobs:
     name: Run test and deploy
     runs-on:
       - self-hosted
-      - new-dev
+      - newer-dev
     steps:
       - name: Make envfile
         run: |
