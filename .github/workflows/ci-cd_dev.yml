@@ -6,7 +6,7 @@ jobs:
     name: Run test and deploy
     runs-on:
       - self-hosted
-      - client-dev
+      - new-dev
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
