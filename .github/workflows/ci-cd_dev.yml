@@ -8,6 +8,10 @@ jobs:
       - self-hosted
       - newer-dev
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          clean: false
       - name: Make envfile
         run: |
           echo "REACT_APP_API_URL=http://34.229.153.54/api" > .env
