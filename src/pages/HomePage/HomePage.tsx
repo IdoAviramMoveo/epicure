@@ -13,6 +13,7 @@ import AboutUs from "../../components/AboutUs/AboutUs";
 import Modal from "../../components/Modal/Modal";
 import Footer from "../../components/Footer/Footer";
 import SearchedCards from "../../components/SearchedCards/SearchedCards";
+import ScrollToTopButton from "../../components/ScrollToTopButton/ScrollToTopButton";
 
 import { fetchHomePageData } from "../../redux-toolkit/thunks/homePageThunk";
 import { CardType } from "../../models/types";
@@ -21,9 +22,7 @@ import IconsData from "../../constants/IconsData";
 const HomePage = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { popularRestaurants, signatureDishes, chefOfTheWeek, isModalOpen } = useSelector(
-    (state: RootState) => state.homePage
-  );
+  const { popularRestaurants, signatureDishes, chefOfTheWeek, isModalOpen } = useSelector((state: RootState) => state.homePage);
 
   const { isSearchActive } = useSelector((state: RootState) => state.search);
 
@@ -53,7 +52,7 @@ const HomePage = () => {
         <AboutUs />
       </div>
       <Footer />
-
+      <ScrollToTopButton />
       {isModalOpen && <Modal />}
     </>
   );
