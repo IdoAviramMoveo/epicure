@@ -28,7 +28,7 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(fetchHomePageData());
-  }, [dispatch]);
+  }, [dispatch, popularRestaurants, signatureDishes, chefOfTheWeek]);
 
   return (
     <>
