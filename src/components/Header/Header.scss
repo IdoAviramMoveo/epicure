@@ -43,20 +43,40 @@
     @include desktop {
       display: flex;
       gap: 32px;
-      .big-link {
+      .big-link,
+      .small-link {
         @include font-style;
+        text-decoration: none;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 8px;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 1.8px;
+          background-color: transparent;
+          transition: background-color 0.3s;
+        }
+
+        &.active::after {
+          background-color: rgba(222, 146, 0, 0.9);
+        }
+      }
+
+      .big-link {
         font-size: 27px;
         letter-spacing: 1.35px;
         height: 33px;
-        text-decoration: none;
       }
       .small-link {
-        @include font-style;
         font-size: 18px;
         line-height: 30px;
         letter-spacing: 1.92px;
         height: 22px;
-        text-decoration: none;
       }
     }
   }

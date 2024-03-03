@@ -1,4 +1,4 @@
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 
 import "./Header.scss";
 import hamburgerLogo from "../../assets/images/hamburgerLogo.svg";
@@ -30,9 +30,13 @@ const Header = () => {
           <Link to='/' className='big-link' onClick={() => handleLinkClick("/")}>
             EPICURE
           </Link>
-          <Link to='/restaurants' className='small-link' onClick={() => handleLinkClick("/restaurants")}>
+          <NavLink
+            to='/restaurants'
+            className={({ isActive }) => (isActive ? "small-link active" : "small-link")}
+            onClick={() => handleLinkClick("/restaurants")}
+          >
             Restaurants
-          </Link>
+          </NavLink>
           <Link to='/' className='small-link' onClick={() => handleLinkClick("/")}>
             Chefs
           </Link>
