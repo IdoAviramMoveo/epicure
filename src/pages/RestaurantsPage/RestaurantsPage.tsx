@@ -19,7 +19,7 @@ const RestaurantsPage = () => {
   return (
     <>
       <div className='restaurants-page-container'>
-        <h2>{restaurants.title}</h2>
+        <h2 className='title'>{restaurants.title}</h2>
         <div className='restaurants-container'>
           {restaurants.cards.map((card: CardProps) => (
             <Card {...card} className='first-type' key={card.title} />

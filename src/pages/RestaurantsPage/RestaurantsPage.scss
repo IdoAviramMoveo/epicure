@@ -1,5 +1,21 @@
+@import "../../styles/mixins";
+
 .restaurants-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
   padding: 14px 20px;
+
+  .title {
+    @include font-style;
+    line-height: 22px;
+    letter-spacing: 1.92px;
+    font-size: 18px;
+    @include desktop {
+      display: none;
+    }
+  }
+
   .restaurants-container {
     display: flex;
     flex-direction: column;
