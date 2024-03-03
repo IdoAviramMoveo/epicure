@@ -30,7 +30,7 @@ const Header = () => {
           <Link to='/' className='big-link' onClick={() => handleLinkClick("/")}>
             EPICURE
           </Link>
-          <Link to='/' className='small-link' onClick={() => handleLinkClick("/")}>
+          <Link to='/restaurants' className='small-link' onClick={() => handleLinkClick("/restaurants")}>
             Restaurants
           </Link>
           <Link to='/' className='small-link' onClick={() => handleLinkClick("/")}>

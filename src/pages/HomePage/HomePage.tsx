@@ -4,14 +4,12 @@ import { RootState, AppDispatch } from "../../redux-toolkit/store";
 
 import "./HomePage.scss";
 
-import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import CardsGallery from "../../components/CardsGallery/CardsGallery";
 import IconsMeaning from "../../components/IconsMeaning/IconsMeaning";
 import ChefOfTheWeek from "../../components/ChefOfTheWeek/ChefOfTheWeek";
 import AboutUs from "../../components/AboutUs/AboutUs";
 import Modal from "../../components/Modal/Modal";
-import Footer from "../../components/Footer/Footer";
 import SearchedCards from "../../components/SearchedCards/SearchedCards";
 import ScrollToTopButton from "../../components/ScrollToTopButton/ScrollToTopButton";
 
@@ -32,7 +30,6 @@ const HomePage = () => {
 
   return (
     <>
-      <Header />
       <div className='homepage-container'>
         <Hero />
         {isSearchActive ? (
@@ -51,7 +48,6 @@ const HomePage = () => {
         )}
         <AboutUs />
       </div>
-      <Footer />
       <ScrollToTopButton />
       {isModalOpen && <Modal />}
     </>
