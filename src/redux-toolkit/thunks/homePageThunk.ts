@@ -18,7 +18,7 @@ export const fetchHomePageData = createAsyncThunk("homePage/fetchData", async ()
   const chefOfTheWeek = await chefAdapter.getChefOfTheWeek();
 
   return {
-    popularRestaurants: transformRestaurantData(popularRestaurants),
+    popularRestaurants: transformRestaurantData(popularRestaurants, "POPULAR RESTAURANT IN EPICURE:"),
     signatureDishes: transformDishData(signatureDishes),
     chefOfTheWeek: transformChefData(chefOfTheWeek, transformRestaurantData(chefOfTheWeek.restaurants)),
   };

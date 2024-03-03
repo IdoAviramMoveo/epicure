@@ -85,7 +85,7 @@ export const transformDishData = (data: BackendDish[]): Section => {
   };
 };
 
-export const transformRestaurantData = (data: BackendRestaurant[]): Section => {
+export const transformRestaurantData = (data: BackendRestaurant[], title: string = ""): Section => {
   const cards = data.map((restaurant) => ({
     title: restaurant.title,
     image: restaurant.image,
@@ -94,7 +94,7 @@ export const transformRestaurantData = (data: BackendRestaurant[]): Section => {
   }));
 
   return {
-    title: "POPULAR RESTAURANT IN EPICURE:",
+    title,
     cards,
   };
 };
