@@ -23,5 +23,16 @@
     justify-content: center;
     gap: 25px;
     width: 100%;
+    @include desktop {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .restaurants-page-card {
+      margin-bottom: 15px;
+    }
   }
 }

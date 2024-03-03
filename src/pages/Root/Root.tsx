@@ -1,7 +1,7 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import ScrollToTopButton from "../../components/ScrollToTopButton/ScrollToTopButton";
 
 const Root = () => {
   return (
@@ -11,6 +11,7 @@ const Root = () => {
         <Outlet />
       </main>
       <Footer />
+      <ScrollToTopButton />
     </>
   );
 };

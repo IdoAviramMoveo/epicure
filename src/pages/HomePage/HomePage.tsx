@@ -11,7 +11,6 @@ import ChefOfTheWeek from "../../components/ChefOfTheWeek/ChefOfTheWeek";
 import AboutUs from "../../components/AboutUs/AboutUs";
 import Modal from "../../components/Modal/Modal";
 import SearchedCards from "../../components/SearchedCards/SearchedCards";
-import ScrollToTopButton from "../../components/ScrollToTopButton/ScrollToTopButton";
 
 import { fetchHomePageData } from "../../redux-toolkit/thunks/homePageThunk";
 import { CardType } from "../../models/types";
@@ -48,7 +47,6 @@ const HomePage = () => {
         )}
         <AboutUs />
       </div>
-      <ScrollToTopButton />
       {isModalOpen && <Modal />}
     </>
   );

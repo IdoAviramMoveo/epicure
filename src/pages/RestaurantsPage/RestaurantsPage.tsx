@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Fade } from "react-awesome-reveal";
 
 import "./RestaurantsPage.scss";
 import { RootState, AppDispatch } from "../../redux-toolkit/store";
@@ -21,9 +22,11 @@ const RestaurantsPage = () => {
       <div className='restaurants-page-container'>
         <h2 className='title'>{restaurants.title}</h2>
         <div className='restaurants-container'>
-          {restaurants.cards.map((card: CardProps) => (
-            <Card {...card} className='first-type' key={card.title} />
-          ))}
+          <Fade>
+            {restaurants.cards.map((card: CardProps) => (
+              <Card {...card} className='restaurants-page-card' key={card.title} />
+            ))}
+          </Fade>
         </div>
       </div>
     </>
