@@ -1,103 +1,125 @@
 @import "../../styles/mixins";
 
-.header {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 46px;
-  @include desktop {
-    height: 64px;
-    gap: 32px;
-  }
-
-  .hamburger-menu {
-    position: absolute;
-    top: 11px;
-    left: 20px;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    @include desktop {
-      display: none;
-    }
-  }
-
-  .app-logo {
-    width: 33px;
-    height: 32px;
-    flex-shrink: 0;
-    cursor: pointer;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    @include desktop {
-      position: static;
-      left: auto;
-      transform: none;
-      margin-left: 127px;
-    }
-  }
-
-  .navbar-links {
-    display: none;
-    @include desktop {
-      display: flex;
-      gap: 32px;
-      .big-link,
-      .small-link {
-        @include font-style;
-        text-decoration: none;
-        position: relative;
-        display: inline-block;
-        padding-bottom: 8px;
-
-        &::after {
-          content: "";
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 1.8px;
-          background-color: transparent;
-          transition: background-color 0.3s;
-        }
-
-        &.active::after {
-          background-color: rgba(222, 146, 0, 0.9);
-        }
-      }
-
-      .big-link {
-        font-size: 27px;
-        letter-spacing: 1.35px;
-        height: 33px;
-      }
-      .small-link {
-        font-size: 18px;
-        line-height: 30px;
-        letter-spacing: 1.92px;
-        height: 22px;
-      }
-    }
-  }
-
-  .navbar-icons {
+.header-and-dropdown-container {
+  .header {
     display: flex;
-    gap: 20px;
-    margin-right: 20px;
-    margin-left: auto;
+    align-items: center;
+    width: 100%;
+    height: 46px;
     @include desktop {
-      margin-right: 127px;
+      height: 64px;
+      gap: 32px;
     }
 
-    .icon {
-      width: 20px;
-      height: 20px;
+    .hamburger-menu {
+      position: absolute;
+      top: 11px;
+      left: 20px;
+      width: 24px;
+      height: 24px;
       cursor: pointer;
       @include desktop {
-        width: 24px;
-        height: 24px;
+        display: none;
       }
+    }
+
+    .app-logo {
+      width: 33px;
+      height: 32px;
+      flex-shrink: 0;
+      cursor: pointer;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      @include desktop {
+        position: static;
+        left: auto;
+        transform: none;
+        margin-left: 127px;
+      }
+    }
+
+    .navbar-links {
+      display: none;
+      @include desktop {
+        display: flex;
+        gap: 32px;
+        .big-link,
+        .small-link {
+          @include font-style;
+          text-decoration: none;
+          position: relative;
+          display: inline-block;
+          padding-bottom: 8px;
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1.8px;
+            background-color: transparent;
+            transition: background-color 0.3s;
+          }
+
+          &.active::after {
+            background-color: rgba(222, 146, 0, 0.9);
+          }
+        }
+
+        .big-link {
+          font-size: 27px;
+          letter-spacing: 1.35px;
+          height: 33px;
+        }
+        .small-link {
+          font-size: 18px;
+          line-height: 30px;
+          letter-spacing: 1.92px;
+          height: 22px;
+        }
+      }
+    }
+
+    .navbar-icons {
+      display: flex;
+      gap: 20px;
+      margin-right: 20px;
+      margin-left: auto;
+      @include desktop {
+        margin-right: 127px;
+      }
+
+      .icon {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        @include desktop {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background-color: white;
+    width: 100%;
+    padding: 40px 20px;
+    z-index: 1;
+
+    .dropdown-link {
+      @include font-style;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: 1.92px;
+      text-decoration: none;
+      color: black;
     }
   }
 }
