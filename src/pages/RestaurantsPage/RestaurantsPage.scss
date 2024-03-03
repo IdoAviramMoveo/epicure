@@ -3,6 +3,7 @@
 .restaurants-page-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 25px;
   padding: 14px 20px;
 
@@ -11,8 +12,32 @@
     line-height: 22px;
     letter-spacing: 1.92px;
     font-size: 18px;
+    align-self: flex-start;
     @include desktop {
       display: none;
+    }
+  }
+
+  .restaurants-filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    .filter-button {
+      @include font-style;
+      border: none;
+      background-color: white;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: 1.92px;
+      &.active {
+        border-bottom: 1.8px solid rgba(222, 146, 0, 0.9);
+        font-weight: 400;
+        @include desktop {
+          border-bottom: none;
+        }
+      }
     }
   }
 
