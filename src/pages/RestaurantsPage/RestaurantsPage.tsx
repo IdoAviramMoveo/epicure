@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Fade, Slide } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 
 import "./RestaurantsPage.scss";
 import { RootState, AppDispatch } from "../../redux-toolkit/store";
@@ -18,10 +18,9 @@ const RestaurantsPage = () => {
 
   useEffect(() => {
     dispatch(fetchRestaurantsPageData());
-    if (!popularRestaurants.cards.length) {
-      dispatch(fetchHomePageData());
-    }
-  }, [dispatch, popularRestaurants, restaurants, popularRestaurants.cards]);
+    dispatch(fetchHomePageData());
+    window.scrollTo(0, 0);
+  }, [dispatch]);
 
   const handleFilterClick = (filter: string) => {
     setActiveFilter(filter);

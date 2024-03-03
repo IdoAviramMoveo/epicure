@@ -6,6 +6,10 @@
   align-items: center;
   gap: 25px;
   padding: 14px 20px;
+  @include desktop {
+    border-top: 0.2px solid #979797;
+    border-bottom: 0.2px solid #979797;
+  }
 
   .title {
     @include font-style;
@@ -21,7 +25,11 @@
   .restaurants-filter-buttons {
     display: flex;
     justify-content: center;
+    align-self: flex-start;
     gap: 20px;
+    @include desktop {
+      align-self: center;
+    }
 
     .filter-button {
       @include font-style;
