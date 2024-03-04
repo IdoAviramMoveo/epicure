@@ -5,7 +5,6 @@
   flex-direction: column;
   align-items: center;
   gap: 25px;
-  padding: 14px 20px;
   @include desktop {
     border-top: 0.2px solid #979797;
     border-bottom: 0.2px solid #979797;
@@ -17,6 +16,7 @@
     letter-spacing: 1.92px;
     font-size: 18px;
     align-self: flex-start;
+    padding: 14px 0 0 20px;
     @include desktop {
       display: none;
     }
@@ -27,7 +27,9 @@
     justify-content: center;
     align-self: flex-start;
     gap: 20px;
+    padding: 0 0 0 20px;
     @include desktop {
+      padding: 48px 0 0 0;
       align-self: center;
     }
 
@@ -69,14 +71,14 @@
       flex-direction: column;
       box-sizing: border-box;
       overflow-x: hidden;
-      margin-bottom: 15px;
+      padding: 0;
       @include desktop {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 0;
         gap: 40px;
+        margin-bottom: 15px;
       }
 
       .chef-image-container {
