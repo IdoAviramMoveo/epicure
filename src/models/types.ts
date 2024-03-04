@@ -48,6 +48,7 @@ export type ChefData = {
   image: string;
   chefDescription: string;
   restaurants: Section;
+  _id?: string;
 };
 
 export type ModalProps = {

@@ -27,7 +27,7 @@ const RestaurantsPage = () => {
   const getFilteredCards = useCallback(() => {
     switch (activeFilter) {
       case "New":
-        return filterNewRestaurants(restaurants.cards, 5);
+        return filterNewRestaurants(restaurants.cards, 10);
       case "Most Popular":
         return restaurants.cards.filter((restaurant) => restaurant.isPopular);
       default:
@@ -41,11 +41,7 @@ const RestaurantsPage = () => {
         <h2 className='title'>{restaurants.title}</h2>
         <div className='restaurants-filter-buttons'>
           {["All", "New", "Most Popular"].map((filter) => (
-            <button
-              key={filter}
-              className={`filter-button ${activeFilter === filter ? "active" : ""}`}
-              onClick={() => handleFilterClick(filter)}
-            >
+            <button key={filter} className={`filter-button ${activeFilter === filter ? "active" : ""}`} onClick={() => handleFilterClick(filter)}>
               {filter}
             </button>
           ))}

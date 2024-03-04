@@ -41,16 +41,12 @@ const Header = () => {
             <Link to='/' className='big-link' onClick={() => handleLinkClick("/")}>
               EPICURE
             </Link>
-            <NavLink
-              to='/restaurants'
-              className={({ isActive }) => (isActive ? "small-link active" : "small-link")}
-              onClick={() => handleLinkClick("/restaurants")}
-            >
+            <NavLink to='/restaurants' className={({ isActive }) => (isActive ? "small-link active" : "small-link")} onClick={() => handleLinkClick("/restaurants")}>
               Restaurants
             </NavLink>
-            <Link to='/' className='small-link' onClick={() => handleLinkClick("/")}>
+            <NavLink to='/chefs' className={({ isActive }) => (isActive ? "small-link active" : "small-link")} onClick={() => handleLinkClick("/chefs")}>
               Chefs
-            </Link>
+            </NavLink>
           </div>
 
           {!isDropdownOpen && (
@@ -67,7 +63,7 @@ const Header = () => {
             <NavLink to='/restaurants' className='dropdown-link' onClick={() => handleLinkClick("/restaurants")}>
               Restaurants
             </NavLink>
-            <NavLink to='/' className='dropdown-link' onClick={() => handleLinkClick("/")}>
+            <NavLink to='/chefs' className='dropdown-link' onClick={() => handleLinkClick("/chefs")}>
               Chefs
             </NavLink>
           </div>

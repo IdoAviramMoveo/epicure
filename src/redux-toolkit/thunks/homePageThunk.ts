@@ -4,7 +4,7 @@ import { Section, ChefData } from "../../models/types";
 import { restaurantAdapter } from "../adapters/restaurantAdapter";
 import { dishAdapter } from "../adapters/dishAdapter";
 import { chefAdapter } from "../adapters/chefAdapter";
-import { transformRestaurantData, transformDishData, transformChefData } from "../../utils/redux-utils";
+import { transformRestaurantData, transformDishData, transformChefOfTheWeekData } from "../../utils/redux-utils";
 
 interface HomePageData {
   popularRestaurants: Section;
@@ -20,6 +20,6 @@ export const fetchHomePageData = createAsyncThunk("homePage/fetchData", async ()
   return {
     popularRestaurants: transformRestaurantData(popularRestaurants, "POPULAR RESTAURANT IN EPICURE:"),
     signatureDishes: transformDishData(signatureDishes),
-    chefOfTheWeek: transformChefData(chefOfTheWeek, transformRestaurantData(chefOfTheWeek.restaurants)),
+    chefOfTheWeek: transformChefOfTheWeekData(chefOfTheWeek, transformRestaurantData(chefOfTheWeek.restaurants)),
   };
 });

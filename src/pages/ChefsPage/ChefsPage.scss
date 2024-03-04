@@ -1,0 +1,114 @@
+@import "../../styles/mixins";
+
+.chefs-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding: 14px 20px;
+  @include desktop {
+    border-top: 0.2px solid #979797;
+    border-bottom: 0.2px solid #979797;
+  }
+
+  .title {
+    @include font-style;
+    line-height: 22px;
+    letter-spacing: 1.92px;
+    font-size: 18px;
+    align-self: flex-start;
+    @include desktop {
+      display: none;
+    }
+  }
+
+  .chefs-filter-buttons {
+    display: flex;
+    justify-content: center;
+    align-self: flex-start;
+    gap: 20px;
+    @include desktop {
+      align-self: center;
+    }
+
+    .filter-button {
+      @include font-style;
+      border: none;
+      background-color: white;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: 1.92px;
+      &.active {
+        border-bottom: 1.8px solid rgba(222, 146, 0, 0.9);
+        font-weight: 400;
+        @include desktop {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
+  .chefs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+    @include desktop {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .chef-container {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      margin-bottom: 15px;
+      @include desktop {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        gap: 40px;
+      }
+
+      .chef-image-container {
+        background-size: cover;
+        display: flex;
+        align-items: flex-end;
+        width: 335px;
+        height: 337px;
+        @include desktop {
+          min-width: 378px;
+          min-height: 338px;
+        }
+
+        .chef-name {
+          @include font-style;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 47px;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 47px;
+          letter-spacing: 2.67px;
+          background-color: $color-chef-overlay;
+          @include desktop {
+            height: 78px;
+            font-size: 40px;
+          }
+        }
+      }
+    }
+  }
+}
