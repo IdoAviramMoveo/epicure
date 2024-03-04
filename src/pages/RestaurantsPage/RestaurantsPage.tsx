@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Fade } from "react-awesome-reveal";
 
 import "./RestaurantsPage.scss";
 import { RootState, AppDispatch } from "../../redux-toolkit/store";
 import { fetchRestaurantsPageData } from "../../redux-toolkit/thunks/restaurantsPageThunk";
-import { fetchHomePageData } from "../../redux-toolkit/thunks/homePageThunk";
 import Card from "../../components/Card/Card";
 import { CardProps } from "../../models/types";
 
@@ -14,25 +13,38 @@ const RestaurantsPage = () => {
   const [activeFilter, setActiveFilter] = useState("All");
 
   const { restaurants } = useSelector((state: RootState) => state.restaurantsPage);
-  const { popularRestaurants } = useSelector((state: RootState) => state.homePage);
 
   useEffect(() => {
     dispatch(fetchRestaurantsPageData());
-    dispatch(fetchHomePageData());
     window.scrollTo(0, 0);
   }, [dispatch]);
 
-  const handleFilterClick = (filter: string) => {
+  const handleFilterClick = useCallback((filter: string) => {
     setActiveFilter(filter);
-  };
+  }, []);
 
-  const filteredCards = () => {
-    if (activeFilter === "New") {
-      return restaurants.cards.slice(-9).map((card: CardProps) => <Card {...card} className='restaurants-page-card' key={card.title} />);
-    } else if (activeFilter === "Most Popular") {
-      return popularRestaurants.cards.map((card: CardProps) => <Card {...card} className='restaurants-page-card' key={card.title} />);
+  const getFilteredCards = useCallback(() => {
+    const threeDaysAgo = new Date();
+    threeDaysAgo.setDate(threeDaysAgo.getDate() - 5);
+
+    switch (activeFilter) {
+      case "New":
+        return restaurants.cards.filter((restaurant) => {
+          if (!restaurant._id) return false;
+          const creationDate = getDateFromObjectId(restaurant._id);
+          return creationDate > threeDaysAgo;
+        });
+      case "Most Popular":
+        return restaurants.cards.filter((restaurant) => restaurant.isPopular);
+      default:
+        return restaurants.cards;
     }
-    return restaurants.cards.map((card: CardProps) => <Card {...card} className='restaurants-page-card' key={card.title} />);
+  }, [activeFilter, restaurants.cards]);
+
+  const getDateFromObjectId = (objectId: string): Date => {
+    const timestamp = objectId.substring(0, 8);
+    const date = new Date(parseInt(timestamp, 16) * 1000);
+    return date;
   };
 
   return (
@@ -51,7 +63,11 @@ const RestaurantsPage = () => {
           ))}
         </div>
         <div className='restaurants-container'>
-          <Fade>{filteredCards()}</Fade>
+          <Fade>
+            {getFilteredCards().map((card: CardProps) => (
+              <Card {...card} className='restaurants-page-card' key={card._id} />
+            ))}
+          </Fade>
         </div>
       </div>
     </>

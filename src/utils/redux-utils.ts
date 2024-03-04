@@ -91,6 +91,8 @@ export const transformRestaurantData = (data: BackendRestaurant[], title: string
     image: restaurant.image,
     subtitle: restaurant.chef.title,
     rating: getRatingImage(restaurant.rating),
+    isPopular: restaurant.isPopular,
+    _id: restaurant._id,
   }));
 
   return {

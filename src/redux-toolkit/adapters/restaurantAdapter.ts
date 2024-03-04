@@ -7,6 +7,7 @@ export interface BackendRestaurant {
   chef: { title: string };
   rating: number;
   dishes: string[];
+  isPopular: boolean;
 }
 
 class RestaurantAdapter {
