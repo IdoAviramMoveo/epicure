@@ -1,0 +1,71 @@
+@import "../../styles/mixins";
+
+.restaurants-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding: 14px 20px;
+  @include desktop {
+    border-top: 0.2px solid #979797;
+    border-bottom: 0.2px solid #979797;
+  }
+
+  .title {
+    @include font-style;
+    line-height: 22px;
+    letter-spacing: 1.92px;
+    font-size: 18px;
+    align-self: flex-start;
+    @include desktop {
+      display: none;
+    }
+  }
+
+  .restaurants-filter-buttons {
+    display: flex;
+    justify-content: center;
+    align-self: flex-start;
+    gap: 20px;
+    @include desktop {
+      align-self: center;
+    }
+
+    .filter-button {
+      @include font-style;
+      border: none;
+      background-color: white;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: 1.92px;
+      &.active {
+        border-bottom: 1.8px solid rgba(222, 146, 0, 0.9);
+        font-weight: 400;
+        @include desktop {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
+  .restaurants-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+    @include desktop {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .restaurants-page-card {
+      margin-bottom: 15px;
+    }
+  }
+}

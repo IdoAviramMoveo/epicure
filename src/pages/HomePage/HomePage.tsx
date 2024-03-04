@@ -4,14 +4,12 @@ import { RootState, AppDispatch } from "../../redux-toolkit/store";
 
 import "./HomePage.scss";
 
-import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import CardsGallery from "../../components/CardsGallery/CardsGallery";
 import IconsMeaning from "../../components/IconsMeaning/IconsMeaning";
 import ChefOfTheWeek from "../../components/ChefOfTheWeek/ChefOfTheWeek";
 import AboutUs from "../../components/AboutUs/AboutUs";
 import Modal from "../../components/Modal/Modal";
-import Footer from "../../components/Footer/Footer";
 import SearchedCards from "../../components/SearchedCards/SearchedCards";
 
 import { fetchHomePageData } from "../../redux-toolkit/thunks/homePageThunk";
@@ -21,19 +19,16 @@ import IconsData from "../../constants/IconsData";
 const HomePage = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { popularRestaurants, signatureDishes, chefOfTheWeek, isModalOpen } = useSelector(
-    (state: RootState) => state.homePage
-  );
+  const { popularRestaurants, signatureDishes, chefOfTheWeek, isModalOpen } = useSelector((state: RootState) => state.homePage);
 
   const { isSearchActive } = useSelector((state: RootState) => state.search);
 
   useEffect(() => {
     dispatch(fetchHomePageData());
-  }, [dispatch]);
+  }, [dispatch, popularRestaurants, signatureDishes, chefOfTheWeek]);
 
   return (
     <>
-      <Header />
       <div className='homepage-container'>
         <Hero />
         {isSearchActive ? (
@@ -52,8 +47,6 @@ const HomePage = () => {
         )}
         <AboutUs />
       </div>
-      <Footer />
-
       {isModalOpen && <Modal />}
     </>
   );

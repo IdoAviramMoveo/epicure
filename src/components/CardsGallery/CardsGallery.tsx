@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import { AppDispatch } from "../../redux-toolkit/store";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Fade } from "react-awesome-reveal";
+import { useNavigate } from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -18,6 +19,7 @@ import allRestaurantsIcon from "../../assets/images/allRestaurantsIcon.svg";
 
 const CardsGallery: React.FC<CardsGalleryProps> = ({ cardsData, cardType, isSearch }) => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
   const handleCardClick = useCallback(
     (card: CardProps) => {
@@ -25,6 +27,10 @@ const CardsGallery: React.FC<CardsGalleryProps> = ({ cardsData, cardType, isSear
     },
     [dispatch]
   );
+
+  const handleAllRestaurantsClick = useCallback(() => {
+    navigate("/restaurants");
+  }, [navigate]);
 
   const spaceBetween: number = cardType === 3 ? 16 : 24;
   const className = cardType === CardType.ChefRestaurantType ? "third-type" : cardType === CardType.RestaurantType ? "first-type" : "";
@@ -46,7 +52,7 @@ const CardsGallery: React.FC<CardsGalleryProps> = ({ cardsData, cardType, isSear
           </Swiper>
 
           {cardType === CardType.RestaurantType && (
-            <div className='all-restaurants'>
+            <div className='all-restaurants' onClick={handleAllRestaurantsClick}>
               <span className='all-restaurants-text'>All Restaurants</span>
               <img src={allRestaurantsIcon} alt='All Restaurants' className='arrows-icon' />
             </div>

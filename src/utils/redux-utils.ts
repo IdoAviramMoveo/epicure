@@ -1,8 +1,7 @@
 import { BackendRestaurant } from "../redux-toolkit/adapters/restaurantAdapter";
 import { BackendChef } from "../redux-toolkit/adapters/chefAdapter";
 import { BackendDish } from "../redux-toolkit/adapters/dishAdapter";
-
-import { Section, ChefData } from "../models/types";
+import { Section, ChefData, CardProps } from "../models/types";
 
 import spicyFoodIcon from "../assets/images/spicyFoodIcon.svg";
 import veganFoodIcon from "../assets/images/veganFoodIcon.svg";
@@ -85,16 +84,35 @@ export const transformDishData = (data: BackendDish[]): Section => {
   };
 };
 
-export const transformRestaurantData = (data: BackendRestaurant[]): Section => {
+export const transformRestaurantData = (data: BackendRestaurant[], title: string = ""): Section => {
   const cards = data.map((restaurant) => ({
     title: restaurant.title,
     image: restaurant.image,
     subtitle: restaurant.chef.title,
     rating: getRatingImage(restaurant.rating),
+    isPopular: restaurant.isPopular,
+    _id: restaurant._id,
   }));
 
   return {
-    title: "POPULAR RESTAURANT IN EPICURE:",
+    title,
     cards,
   };
+};
+
+export const getDateFromObjectId = (objectId: string): Date => {
+  const timestamp = objectId.substring(0, 8);
+  const date = new Date(parseInt(timestamp, 16) * 1000);
+  return date;
+};
+
+export const filterNewRestaurants = (restaurants: CardProps[], days: number): CardProps[] => {
+  const date = new Date();
+  date.setDate(date.getDate() - days);
+
+  return restaurants.filter((restaurant) => {
+    if (!restaurant._id) return false;
+    const creationDate = getDateFromObjectId(restaurant._id);
+    return creationDate > date;
+  });
 };

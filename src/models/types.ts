@@ -7,6 +7,8 @@ export type CardProps = {
   price?: number;
   className?: string;
   rating?: string;
+  isPopular?: boolean;
+  _id?: string;
 };
 
 export type Section = {

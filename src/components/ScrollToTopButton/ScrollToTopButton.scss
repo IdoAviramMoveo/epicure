@@ -1,0 +1,42 @@
+@import "../../styles/mixins";
+
+.scroll-to-top-button {
+  display: none;
+  @include desktop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    background-color: #f8f8f8;
+    color: #000;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s,
+      transform 0.3s,
+      visibility 0.3s;
+
+    &:hover {
+      background-color: #e0e0e0;
+      transform: translateY(-0.25rem);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    & > .MuiSvgIcon-root {
+      font-size: 1.5rem;
+    }
+  }
+}
