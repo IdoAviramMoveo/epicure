@@ -140,7 +140,3 @@ export const filterNewChefs = (chefs: ChefData[], days: number): ChefData[] => {
     return creationDate > date;
   });
 };
-
-export const filterMostViewedChefs = (chefs: ChefData[]): ChefData[] => {
-  return chefs.filter((_, index) => index % 3 === 0);
-};

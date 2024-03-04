@@ -6,7 +6,7 @@ import "./ChefsPage.scss";
 import { RootState, AppDispatch } from "../../redux-toolkit/store";
 import { fetchChefsPageData } from "../../redux-toolkit/thunks/chefsPageThunk";
 import { ChefData } from "../../models/types";
-import { filterMostViewedChefs, filterNewChefs } from "../../utils/redux-utils";
+import { filterNewChefs } from "../../utils/redux-utils";
 
 const ChefsPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -25,8 +25,6 @@ const ChefsPage = () => {
     switch (activeFilter) {
       case "New":
         return filterNewChefs(chefs, 10);
-      case "Most Viewed":
-        return filterMostViewedChefs(chefs);
       default:
         return chefs;
     }
@@ -40,7 +38,7 @@ const ChefsPage = () => {
     <div className='chefs-page-container'>
       <h2 className='title'>CHEFS</h2>
       <div className='chefs-filter-buttons'>
-        {["All", "New", "Most Viewed"].map((filter) => (
+        {["All", "New"].map((filter) => (
           <button key={filter} className={`filter-button ${activeFilter === filter ? "active" : ""}`} onClick={() => handleFilterClick(filter)}>
             {filter}
           </button>
