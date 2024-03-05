@@ -1,15 +1,27 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { searchAll } from "../../redux-toolkit/thunks/searchThunk";
-import { AppDispatch } from "../../redux-toolkit/store";
+import { AppDispatch, RootState } from "../../redux-toolkit/store";
+import { useSelector } from "react-redux";
 
 import "./Hero.scss";
 
 import searchLogo from "../../assets/images/searchLogo.svg";
+import { resetSearchInputFocus } from "../../redux-toolkit/slices/searchSlice";
 
 const Hero = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const dispatch = useDispatch<AppDispatch>();
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  const shouldFocusSearchInput = useSelector((state: RootState) => state.search.shouldFocusSearchInput);
+
+  useEffect(() => {
+    if (shouldFocusSearchInput) {
+      inputRef.current?.focus();
+      dispatch(resetSearchInputFocus());
+    }
+  }, [shouldFocusSearchInput, dispatch]);
 
   const handleSearch = useCallback(() => {
     dispatch(searchAll(searchTerm));
@@ -34,6 +46,7 @@ const Hero = () => {
               <img src={searchLogo} alt='Search Logo' />
             </button>
             <input
+              ref={inputRef}
               type='text'
               placeholder='Search for restaurant cuisine, chef'
               value={searchTerm}

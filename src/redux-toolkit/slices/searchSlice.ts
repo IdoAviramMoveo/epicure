@@ -10,6 +10,7 @@ interface SearchState {
   loading: boolean;
   error: string | null;
   isSearchActive: boolean;
+  shouldFocusSearchInput: boolean;
 }
 
 const initialState: SearchState = {
@@ -19,12 +20,20 @@ const initialState: SearchState = {
   loading: false,
   error: null,
   isSearchActive: false,
+  shouldFocusSearchInput: false,
 };
 
 const searchSlice = createSlice({
   name: "search",
   initialState,
-  reducers: {},
+  reducers: {
+    triggerSearchInputFocus: (state) => {
+      state.shouldFocusSearchInput = true;
+    },
+    resetSearchInputFocus: (state) => {
+      state.shouldFocusSearchInput = false;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(searchAll.pending, (state) => {
       state.loading = true;
@@ -43,5 +52,7 @@ const searchSlice = createSlice({
     });
   },
 });
+
+export const { triggerSearchInputFocus, resetSearchInputFocus } = searchSlice.actions;
 
 export default searchSlice.reducer;
