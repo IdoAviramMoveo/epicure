@@ -24,7 +24,7 @@ const ChefsPage = () => {
   const getFilteredChefs = useCallback(() => {
     switch (activeFilter) {
       case "New":
-        return filterNewChefs(chefs, 10);
+        return filterNewChefs(chefs, 5);
       default:
         return chefs;
     }

@@ -27,7 +27,7 @@ const RestaurantsPage = () => {
   const getFilteredCards = useCallback(() => {
     switch (activeFilter) {
       case "New":
-        return filterNewRestaurants(restaurants.cards, 10);
+        return filterNewRestaurants(restaurants.cards, 5);
       case "Most Popular":
         return restaurants.cards.filter((restaurant) => restaurant.isPopular);
       default:
