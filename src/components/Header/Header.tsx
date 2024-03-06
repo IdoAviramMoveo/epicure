@@ -1,18 +1,23 @@
 import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import "./Header.scss";
+import { triggerSearchInputFocus } from "../../redux-toolkit/slices/searchSlice";
 import hamburgerLogo from "../../assets/images/hamburgerLogo.svg";
 import closeDropdownLogo from "../../assets/images/xDropdown.svg";
 import epicureLogo2 from "../../assets/images/epicureLogo2.png";
 import bagLogo from "../../assets/images/bagLogo.svg";
 import searchLogo from "../../assets/images/searchLogo.svg";
 import userLogo from "../../assets/images/userLogo.svg";
+import { AppDispatch } from "../../redux-toolkit/store";
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleLinkClick = (path: string) => {
     setIsDropdownOpen(false);
@@ -21,6 +26,11 @@ const Header = () => {
     } else {
       navigate(path);
     }
+  };
+
+  const handleSearchIconClick = () => {
+    navigate("/");
+    dispatch(triggerSearchInputFocus());
   };
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
@@ -41,21 +51,17 @@ const Header = () => {
             <Link to='/' className='big-link' onClick={() => handleLinkClick("/")}>
               EPICURE
             </Link>
-            <NavLink
-              to='/restaurants'
-              className={({ isActive }) => (isActive ? "small-link active" : "small-link")}
-              onClick={() => handleLinkClick("/restaurants")}
-            >
+            <NavLink to='/restaurants' className={({ isActive }) => (isActive ? "small-link active" : "small-link")} onClick={() => handleLinkClick("/restaurants")}>
               Restaurants
             </NavLink>
-            <Link to='/' className='small-link' onClick={() => handleLinkClick("/")}>
+            <NavLink to='/chefs' className={({ isActive }) => (isActive ? "small-link active" : "small-link")} onClick={() => handleLinkClick("/chefs")}>
               Chefs
-            </Link>
+            </NavLink>
           </div>
 
           {!isDropdownOpen && (
             <div className='navbar-icons'>
-              <img className='icon' src={searchLogo} alt='Search' />
+              <img className='icon' src={searchLogo} alt='Search' onClick={handleSearchIconClick} />
               <img className='icon' src={userLogo} alt='User Account' />
               <img className='icon' src={bagLogo} alt='Shopping Bag' />
             </div>
@@ -67,7 +73,7 @@ const Header = () => {
             <NavLink to='/restaurants' className='dropdown-link' onClick={() => handleLinkClick("/restaurants")}>
               Restaurants
             </NavLink>
-            <NavLink to='/' className='dropdown-link' onClick={() => handleLinkClick("/")}>
+            <NavLink to='/chefs' className='dropdown-link' onClick={() => handleLinkClick("/chefs")}>
               Chefs
             </NavLink>
           </div>

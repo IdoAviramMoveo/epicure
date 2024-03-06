@@ -16,6 +16,10 @@ class ChefAdapter {
     const response = await apiService.get<BackendChef>(`${ChefAdapter.endpoint}/chef-of-the-week`);
     return response.data;
   }
+  async getAllChefs(): Promise<BackendChef[]> {
+    const response = await apiService.get<BackendChef[]>(`${ChefAdapter.endpoint}`);
+    return response.data;
+  }
 }
 
 export const chefAdapter = new ChefAdapter();

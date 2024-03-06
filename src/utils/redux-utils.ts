@@ -49,7 +49,7 @@ export const getRatingImage = (rating: number): string => {
   }
 };
 
-export const transformChefData = (chefData: BackendChef, restaurantsData: Section): ChefData => {
+export const transformChefOfTheWeekData = (chefData: BackendChef, restaurantsData: Section): ChefData => {
   const chefOfTheWeekRestaurants = restaurantsData.cards.map((restaurant) => ({
     title: restaurant.title,
     image: restaurant.image,
@@ -67,6 +67,19 @@ export const transformChefData = (chefData: BackendChef, restaurantsData: Sectio
     chefDescription: chefData.description,
     restaurants: restaurantsSection,
   };
+};
+
+export const transformChefData = (chefData: BackendChef[]): ChefData[] => {
+  const chefs: ChefData[] = chefData.map((chef) => ({
+    title: "",
+    chefName: chef.title,
+    image: chef.image,
+    chefDescription: chef.description,
+    restaurants: { title: "", cards: [] },
+    _id: chef._id,
+  }));
+
+  return chefs;
 };
 
 export const transformDishData = (data: BackendDish[]): Section => {
@@ -113,6 +126,17 @@ export const filterNewRestaurants = (restaurants: CardProps[], days: number): Ca
   return restaurants.filter((restaurant) => {
     if (!restaurant._id) return false;
     const creationDate = getDateFromObjectId(restaurant._id);
+    return creationDate > date;
+  });
+};
+
+export const filterNewChefs = (chefs: ChefData[], days: number): ChefData[] => {
+  const date = new Date();
+  date.setDate(date.getDate() - days);
+
+  return chefs.filter((chef) => {
+    if (!chef._id) return false;
+    const creationDate = getDateFromObjectId(chef._id);
     return creationDate > date;
   });
 };
