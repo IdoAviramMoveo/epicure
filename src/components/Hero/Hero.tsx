@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { searchAll } from "../../redux-toolkit/thunks/searchThunk";
 import { AppDispatch, RootState } from "../../redux-toolkit/store";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import "./Hero.scss";
 
@@ -12,6 +13,7 @@ import { resetSearchInputFocus } from "../../redux-toolkit/slices/searchSlice";
 const Hero = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
   const inputRef = useRef<HTMLInputElement>(null);
   const shouldFocusSearchInput = useSelector((state: RootState) => state.search.shouldFocusSearchInput);
@@ -25,7 +27,8 @@ const Hero = () => {
 
   const handleSearch = useCallback(() => {
     dispatch(searchAll(searchTerm));
-  }, [dispatch, searchTerm]);
+    navigate(`/search?query=${searchTerm}`);
+  }, [searchTerm, navigate, dispatch]);
 
   const handleKeyPress = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
